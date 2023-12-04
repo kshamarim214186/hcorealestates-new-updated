@@ -27,7 +27,7 @@ const AsyncSearch = () => {
          <AsyncTypeahead
          id="my-async-typeahead"
          labelKey="label"
-         minLength={3}
+         minLength={1}
          onSearch={loadOptions}      
          options={options}
          onChange={handleChange}
