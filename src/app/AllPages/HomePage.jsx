@@ -60,42 +60,42 @@ export default function HomePage({ result }) {
             <title>{pageData.seotitle}</title>
             <meta name="description" content={pageData.seodesc} />
             <section className={styles.bannerSection}>
-              <div className={styles.banner}>
-                <Image src={pageData.banner} className="img-fluid w-100" sizes="(min-width:768) 768vw, 100vw" alt={pageData.name} width={1500} height={550} />
-              </div>
-              <div className={styles.homeSearch}>
-                <div className="container-xl">
-                  <div className="row justify-content-center">
-                    <div className="col-sm-8 col-md-7">
-                      <div className={`${styles.h1} h1`}>{pageData.name}</div>
-                      <div className={styles.inner}>
-                        <Tab.Container id="left-tabs-example" defaultActiveKey="buy">
-                          <Nav variant="underline">
-                            <Nav.Item>
-                              <Nav.Link eventKey="buy">Search By Builder or Project</Nav.Link>
-                            </Nav.Item>
-                          </Nav>
-                          <Tab.Content className="customSearches">
-                            <Tab.Pane eventKey="buy">
-                              <AsyncSearch />
-                            </Tab.Pane>
-                          </Tab.Content>
-                        </Tab.Container>
-                        <div className={styles.popularSearch}>
-                           <div className={styles.heading}>Popular Searches:</div>
-                           <ul>
-                              {popularsearch.map((item) => (
-                              <li key={item.id}>
-                                 <Link href={item.url}>{item.text}</Link>
-                              </li>
-                              ))}
-                           </ul>
+               <div className={styles.banner}>
+                  <Image src={pageData.banner} className="img-fluid w-100" sizes="(min-width:768) 768vw, 100vw" alt={pageData.name} width={1500} height={550} />
+               </div>
+               <div className={styles.homeSearch}>
+                  <div className="container-xl">
+                     <div className="row justify-content-center">
+                        <div className="col-sm-8 col-md-7">
+                           <div className={`${styles.h1} h1`}>{pageData.name}</div>
+                              <div className={styles.inner}>
+                              <Tab.Container id="left-tabs-example" defaultActiveKey="buy">
+                                <Nav variant="underline">
+                                  <Nav.Item>
+                                    <Nav.Link eventKey="buy">Search By Builder or Project</Nav.Link>
+                                  </Nav.Item>
+                                </Nav>
+                                <Tab.Content className="customSearches">
+                                  <Tab.Pane eventKey="buy">
+                                    <AsyncSearch />
+                                  </Tab.Pane>
+                                </Tab.Content>
+                              </Tab.Container>
+                              <div className={styles.popularSearch}>
+                                 <div className={styles.heading}>Popular Searches:</div>
+                                 <ul>
+                                    {popularsearch.map((item) => (
+                                    <li key={item.id}>
+                                       <Link href={item.url}>{item.text}</Link>
+                                    </li>
+                                    ))}
+                                 </ul>
+                              </div>
+                           </div>
                         </div>
-                      </div>
-                    </div>
+                     </div>
                   </div>
-                </div>
-              </div>
+               </div>
             </section>
             
             <section className={styles.topProjectContent}>
