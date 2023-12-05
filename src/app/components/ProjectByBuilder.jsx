@@ -23,9 +23,9 @@ export default async function ProjectByBuilder({ itemObj }) {
                   > 
                {properties.map(function(property) {
                   return (
-                        <SwiperSlide key={property.propId}>
-                          <ListItems itemObj={property} />
-                        </SwiperSlide>
+                     <SwiperSlide key={property.propId}>
+                        <ListItems itemObj={property} />
+                     </SwiperSlide>
 
                   );
                })}

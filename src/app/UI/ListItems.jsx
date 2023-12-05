@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faIndianRupeeSign } from "@fortawesome/pro-regular-svg-icons";
-export default function FeatureProjectList({ itemObj, buttonName }) {
+export default function FeatureProjectList({ itemObj }) {
 
    return (
       <figure className="list">
@@ -12,13 +12,21 @@ export default function FeatureProjectList({ itemObj, buttonName }) {
            {itemObj.isOffer && <div className='offers'>Offers</div>}
          </div>
          <figcaption>
-            <h5><Link href={itemObj.url} className="">{itemObj.name}</Link></h5>
+            <h5><Link href={itemObj.url} className="stretched-link">{itemObj.name}</Link></h5>
             <ul>
                {(itemObj.locationname && itemObj.propsector && itemObj.locationUrl) && <li><Link href={itemObj.locationUrl}>{itemObj.propsector}, {itemObj.locationname}</Link></li>}
             </ul>
-           <div className="price">
+            <div className="price">
                <FontAwesomeIcon icon={faIndianRupeeSign} /> <span>{itemObj.price}</span>{!isNaN(itemObj.price) && <small>Cr.*</small>}
-           </div>
+            </div>
+            <div className="list__bottom">
+               <div className="developer">
+                  By: <span><Link href={itemObj.builderurl}>{itemObj.buildername}</Link></span>
+               </div>
+               <button className="btn-custom">View More
+                  <span><Image className="arrowColor" src='/images/arrow.svg' width={63} height={20} alt="Arrow" /></span>
+               </button>
+            </div>
          </figcaption>
       </figure>
    )
