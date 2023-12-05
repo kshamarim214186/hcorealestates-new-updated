@@ -10,7 +10,7 @@ import HeaderBlog from "../components/header-blog";
 import Footer from "../components/Footer";
 import styles from "../scss/blogs.module.scss";
 import { Breadcrumb } from "react-bootstrap";
-import Search from "../components/Search";
+import AsyncPostCatSearch from "../components/AsyncPostCatSearch";
 import CustomButton from "../UI/CustomButton";
 import PostByCategory from "../components/PostByCategory";
 import Subscribe from "../components/subscribe";
@@ -69,7 +69,7 @@ export default async function PostCatListing({ itemObj }) {
                           {postCatData.h1}
                         </h1>
                         <div className={styles.bg__search}>
-                          <Search />
+                          <AsyncPostCatSearch catId={postCatData.id} />
                         </div>
                       </div>
                     </div>

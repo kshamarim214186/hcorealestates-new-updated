@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 
 /* example-start */
-const SEARCH_URI = process.env.API_URL+'users/autosuggest/';
+const SEARCH_URI = process.env.API_URL+'users/autosuggestofpost/';
 
-const AsyncSearch = () => {
+const AsyncPostSearch = () => {
    const [options, setOptions] = useState([]);
    const router = useRouter()
    const loadOptions = async (query) => { 
@@ -17,7 +17,7 @@ const AsyncSearch = () => {
    };
 
   const handleChange = (selected) => {
-      router.push(selected[0].url);
+      router.push(selected[0].url, '_blank');
    };
 
   return (
@@ -30,12 +30,12 @@ const AsyncSearch = () => {
          onSearch={loadOptions}      
          options={options}
          onChange={handleChange}
-         placeholder="Enter a Locality, Builder or Project..."
+         placeholder="Enter Post Name..."
          />
       </div>
    </div>
   );
 };
-export default AsyncSearch;
+export default AsyncPostSearch;
 
 

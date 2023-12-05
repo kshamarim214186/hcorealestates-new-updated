@@ -10,7 +10,7 @@ import HeaderBlog from "../components/header-blog";
 import Footer from "../components/Footer";
 import styles from "../scss/blogs.module.scss";
 import { Breadcrumb } from "react-bootstrap";
-import Search from "../components/Search";
+import AsyncPostSearch from "../components/AsyncPostSearch";
 import CustomButton from "../UI/CustomButton";
 import BlogItems from "../components/blog-items";
 import Subscribe from "../components/subscribe";
@@ -81,7 +81,7 @@ export default async function PostListing() {
                        <small>Grace your Knowledge</small>{pageData.blogdesc}
                      </h1>
                      <div className={styles.bg__search}>
-                       <Search />
+                       <AsyncPostSearch />
                      </div>
                    </div>
                  </div>
