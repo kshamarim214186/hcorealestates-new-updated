@@ -1,5 +1,4 @@
 "use client";
-import { useRouter } from 'next/navigation'
 import React, { useState } from 'react';
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 
@@ -8,7 +7,6 @@ const SEARCH_URI = process.env.API_URL+'users/autosuggest/';
 
 const AsyncSearch = () => {
    const [options, setOptions] = useState([]);
-   const router = useRouter()
    const loadOptions = async (query) => { 
       `${SEARCH_URI}?term=${query}`
       const response = await fetch(`${SEARCH_URI}?term=${query}`);
@@ -17,7 +15,8 @@ const AsyncSearch = () => {
    };
 
   const handleChange = (selected) => {
-      router.push(selected[0].url);
+      const newTab = window.open(selected[0].url, '_blank');
+      newTab.focus();
    };
 
   return (
