@@ -45,7 +45,7 @@ export default async function ContactUs() {
                   </Breadcrumb>
                   <div className={styles.info}>
                      <h1><small>Contact Us </small>{otherPageData.name}</h1>
-                     <div className={styles.para} dangerouslySetInnerHTML={{ __html: otherPageData.overview }} />
+                     <p className={styles.para}>{otherPageData.overview}</p>
                   </div>
                </div>
             </section>
