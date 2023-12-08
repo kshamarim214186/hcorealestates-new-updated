@@ -17,8 +17,8 @@ export default function Header({ resultHeader, commercialData, residentialData }
       <Navbar bg="white" expand="lg" className="shadow-sm headderContainer">
          <div className="container-xl">
             <Navbar.Toggle aria-controls="offcanvasNavbar-expand-lg" />
-            <Navbar.Brand href="/">
-               <Image src="https://www.hcorealestates.com/images/logo.svg" alt="Hcorealestates" width={170} height={40} />
+            <Navbar.Brand href={pageData.homeurl}>
+               <Image src={pageData.logo} alt="Hcorealestates" width={170} height={40} />
             </Navbar.Brand>
             <div className="search-control">
                <AsyncSearch />
