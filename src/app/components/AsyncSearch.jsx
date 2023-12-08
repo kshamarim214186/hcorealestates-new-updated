@@ -16,7 +16,7 @@ const AsyncSearch = () => {
       setOptions(data.items);
    };
 
-  const handleChange = (selected) => {
+   const handleChange = (selected) => {
       router.push(selected[0].url, '_blank');
    };
 

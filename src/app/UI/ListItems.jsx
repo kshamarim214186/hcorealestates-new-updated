@@ -14,6 +14,9 @@ export default function FeatureProjectList({ itemObj }) {
          <figcaption>
             <h5><Link href={itemObj.url} className="stretched-link">{itemObj.name}</Link></h5>
             <ul>
+               {itemObj.propbhk && <li>{itemObj.propbhk}</li>}
+               {itemObj.propertysubtypename && <li>{itemObj.propertysubtypename}</li>}
+               
                {(itemObj.locationname && itemObj.propsector && itemObj.locationUrl) && <li><Link href={itemObj.locationUrl}>{itemObj.propsector}, {itemObj.locationname}</Link></li>}
             </ul>
             <div className="price">

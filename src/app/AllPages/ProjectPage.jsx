@@ -69,7 +69,7 @@ export default function ProjectPage({ itemObj }) {
                            <Link className={styles.backBtn} href="/"><FontAwesomeIcon icon={faChevronLeft} /></Link>
                            <div className={styles.btnRight}>
                               <Link className={`${styles.counter} stretched-link`} data-fancybox="gallery" href={propData.mainbannerimage}>
-                                 1 / {galleryData.length}
+                                 1 / {itemObj.gallerycount}
                               </Link>
                               {propData.videourl &&
                                  <Link className={styles.video} data-fancybox="video" href={propData.videourl}>
