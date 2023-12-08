@@ -110,23 +110,17 @@ export default function Footer({ resultFooter, commercialData, residentialData }
                   <div className="col-md-7">
                      <div className="h5">About Us</div>
                      <p>{pageData.aboutusshortdesc}</p>
-                     <CustomButton buttonName="About More" url="/about-us/" />
+                     <CustomButton buttonName="About More" url={pageData.aboutusurl} />
                   </div>
                   <div className="col-md-3 col-sm-6">
                      <div className="h5">Explore</div>
-                     <Link href="/">DLF Camellias</Link>
-                     <Link href="/">DLF Magnolias</Link>
-                     <Link href="/">DLF Queens Court</Link>
-                     <Link href="/">DLF One Midtown</Link>
-                     <Link href="/">Experion Westerlies</Link>
-                     <Link href="/">Adani Samsara Vilasa</Link>
                   </div>
                   <div className="col-md-2 col-sm-6">
                      <div className="h5">Company</div>
-                     <Link href="/about-us">About Us</Link>
-                     <Link href="/contact-us">Contact Us</Link>
-                     <Link href="/disclaimer">Disclaimer</Link>
-                     <Link href="/privacy-policy">Privacy Policy</Link>
+                     <Link href={pageData.aboutusurl}>About Us</Link>
+                     <Link href={pageData.contactusurl}>Contact Us</Link>
+                     <Link href={pageData.disclaimerurl}>Disclaimer</Link>
+                     <Link href={pageData.ppolicyurl}>Privacy Policy</Link>
                   </div>
                </div>
             </div>
@@ -143,11 +137,6 @@ export default function Footer({ resultFooter, commercialData, residentialData }
           <FontAwesomeIcon icon={faWhatsapp} />
         </Link>
       </div>
-      {/* <button id="goTop"><i className="fas fa-chevron-up"></i></button> 
-      <div className="desk_btn">
-        <button className="btn btn-warning btn-lg rounded-0" data-bs-toggle="modal" data-bs-target="#footerModal">ENQUIRE NOW</button>
-      </div>
-      */}
       <div className="aside_btn">
          <Link className="whatsapp" target="_blank" href="https://api.whatsapp.com/send?phone=+971507794706&amp;text=Hi%20I'm%20interested%20in%20Dubai Housing.">
             <FontAwesomeIcon icon={faWhatsappSquare} /> <span>Whatsapp Now</span>
