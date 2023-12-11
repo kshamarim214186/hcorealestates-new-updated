@@ -1,4 +1,3 @@
-"use client";
 import { useState } from "react";
 import CountryDropDown from "./CountryDropDown";
 import submitPopupForm from "../api/submitPopupForm";

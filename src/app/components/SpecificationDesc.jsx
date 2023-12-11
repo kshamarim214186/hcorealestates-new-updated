@@ -1,38 +1,57 @@
-"use client";
 import styles from "../scss/main.module.scss";
+import React, { useState, useEffect } from 'react';
+export default function FloorPlan({ itemObj, propId }) {  
+   const [propSpecification, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-export default async function FloorPlan({ itemObj, propId }) {   
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
+            const formData = new URLSearchParams();
+            formData.append('projectid', propId);
+            formData.append('catid', itemObj.specicatid);
+            formData.append('token1', process.env.token1);
+            formData.append('token2', process.env.token2);
 
-   const propSpecification = await getProjectSpecification(itemObj.specicatid,propId);
+            const finalresult = await fetch(process.env.API_URL+'properties/getprojectspecification/', {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded',
+               },
+               body: formData,
+            });   
+           const result = await finalresult.json();
+           setData(result);
+         } catch (error) {
+            console.error('Error fetching data:', error);
+         } finally {
+           setLoading(false); // Set loading to false regardless of success or error
+         }
+      };
+      fetchData();
+      return () => {
+
+      };
+   }, []);
    const propertySpeci = propSpecification.specification;
-
+   
    return (
       <> 
-         {propertySpeci.map(function(propSpecification) {
-            return (
-               <div className={styles.lines} key={propSpecification.specid}>
-                 <strong>{propSpecification.specsubcat}</strong>{propSpecification.specname}
+         <div>
+            {loading ? (
+              <div>Loading...</div>
+            ) : propertySpeci.length > 0 ? (
+               <div>
+                  {propertySpeci.map((item, index) => (
+                     <div className={styles.lines} key={item.specid}>
+                       <strong>{item.specsubcat}</strong>{item.specname}
+                     </div>
+                  ))}
                </div>
-            )
-         })} 
+            ) : (
+              <div>No data available</div>
+            )}
+         </div>
       </>
    );
-}
-
-async function getProjectSpecification(floorcatid,propId) {
-   //console.log(floorcatid);
-   const formData = new URLSearchParams();
-
-   formData.append('projectid', propId);
-   formData.append('catid', floorcatid);
-   formData.append('token1', 'test');
-   formData.append('token2', 'test1');
-   const finalresult = await fetch(process.env.API_URL+'properties/getprojectspecification/', {
-      method: 'POST',
-      headers: {
-         'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: formData,
-   });   
-   return await finalresult.json();
 }

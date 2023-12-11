@@ -1,4 +1,3 @@
-"use client";
 import Header from "../../components/Header";
 import ProjectPage from "../../AllPages/ProjectPage";
 import Footer from "../../components/Footer";

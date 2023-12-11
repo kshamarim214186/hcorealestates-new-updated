@@ -5,7 +5,6 @@ import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import styles from "../scss/main.module.scss";
-import { useState } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee, faMusic, faBadgePercent, faBank, faCartShopping, faCheck, faIndianRupeeSign, faPhoneVolume, faTimeline } from "@fortawesome/pro-regular-svg-icons";
@@ -19,13 +18,11 @@ import TextComponent from "../UI/TextComponent";
 import MainForm from "../components/MainForm";
 import FloorPlan from "../components/FloorPlan";
 import SpecificationDesc from "../components/SpecificationDesc";
-import ModalForm from "@/app/components/ModalForm";
 import NotFound from "@/app/components/NotFound";
 import MoreOverview from "../UI/MoreOverview"
 import MoreAmenities from "../UI/MoreAmenities"
 import Button from "../UI/Button";
 import { faChevronLeft } from "@fortawesome/pro-solid-svg-icons";
-import FontAwesomeComponent from "@/app/components/FontAwesomeComponent";
 
 export default function ProjectPage({ itemObj }) {
    
@@ -64,7 +61,7 @@ export default function ProjectPage({ itemObj }) {
                      }}
                      >
                      <figure className={`${styles.gridImages__item} ${styles.item1}`}>
-                        <Image src={propData.mainbannerimage} className="img-fluid w-100" alt="test" width={880} height={465} />
+                        {propData.mainbannerimage &&<Image src={propData.mainbannerimage} className="img-fluid w-100" alt="test" width={880} height={465} />}
                         <div className={styles.gallery__info}>
                            <Link className={styles.backBtn} href="/"><FontAwesomeIcon icon={faChevronLeft} /></Link>
                            <div className={styles.btnRight}>
@@ -81,12 +78,12 @@ export default function ProjectPage({ itemObj }) {
                      </figure>
                      <figure className={`${styles.gridImages__item} ${styles.item2}`}>
                         <Link data-fancybox="gallery" className="gallaryCount" href={propData.topbannerimage}>
-                           <Image src={propData.topbannerimage} className="img-fluid w-100" alt={propData.topbanneralt} width={636} height={405} />
+                           {propData.topbannerimage &&<Image src={propData.topbannerimage} className="img-fluid w-100" alt={propData.topbanneralt} width={636} height={405} />}
                         </Link>
                      </figure>
                      <figure className={`${styles.gridImages__item} ${styles.item3}`}>
                         <Link data-fancybox="gallery" className="gallaryCount" href={propData.bottombannerimage}>
-                           <Image src={propData.bottombannerimage} className="img-fluid w-100" alt={propData.bottombanneralt} width={636} height={405} />
+                           {propData.bottombannerimage &&<Image src={propData.bottombannerimage} className="img-fluid w-100" alt={propData.bottombanneralt} width={636} height={405} />}
                         </Link>
                      </figure>
                      {galleryData.length > 0 &&

@@ -1,4 +1,3 @@
-"use client";
 import { useState } from "react";
 import ArrowButton from "@/app/UI/ArrowButton";
 import CustomOffCanvas from "@/app/components/CustomOffCanvas";
