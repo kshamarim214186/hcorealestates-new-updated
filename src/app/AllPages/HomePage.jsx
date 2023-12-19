@@ -15,36 +15,6 @@ import CustomButton from "../UI/CustomButton";
 import ListItems from "../UI/ListItems";
 import AllDevelopers from "../UI/all-developers";
 
-
-const testimonialsData = {
-   heading: ["Customer", "Testimonials"],
-   description: "Some content here for Testimonials minimum length 20",
-   buttonName: "Know More",
-   testimonialDataList: [
-      {
-         id: 1,
-         image: "/images/home/blog-01.jpg",
-         title: "Best Countries To Invest In Real Estate 2023",
-         shortDescription: "Real estate investment is a type of financial investment that includes any property",
-         url: "/post/anant-raj-tripundra/",
-      },
-      {
-         id: 2,
-         image: "/images/home/blog-02.jpg",
-         title: "Best Countries To Invest In Real Estate 2023",
-         shortDescription: "Real estate investment is a type of financial investment that includes any property",
-         url: "/post/anant-raj-tripundra/",
-      },
-      {
-         id: 3,
-         image: "/images/home/blog-03.jpg",
-         title: "Best Countries To Invest In Real Estate 2023",
-         shortDescription: "Real estate investment is a type of financial investment that includes any property",
-         url: "/post/anant-raj-tripundra/",
-      },
-   ],
-};
-
 export default function HomePage({ result }) {
    const pageData = result.pagedata;
    const spotlight = result.spotlight;
@@ -53,7 +23,8 @@ export default function HomePage({ result }) {
    const blogs = result.blogdata;
    const popularsearch = result.popularsearch;
    const otherproject = result.otherproject;
-
+   const testimonial = result.testimonial;
+   
    return (
       <>
          <main className="position-relative">
@@ -266,11 +237,8 @@ export default function HomePage({ result }) {
 
             <section className={styles.testimonials}>
               <div className="container-xl">
-                <h2>
-                  <small>{testimonialsData.heading[0]}</small>
-                  {testimonialsData.heading[1]}
-                </h2>
-                <p>{testimonialsData.description}</p>
+                <h2>{pageData.testihead}</h2>
+                <p>{pageData.testidesc}</p>
                 <div className={styles.testimonials__bg}>
                   <div className={styles.leftBg}>
                     <Image src="/images/shape01.svg" className="img-fluid w-100" alt="bg" width={150} height={150} />
@@ -279,48 +247,20 @@ export default function HomePage({ result }) {
                     <Image src="/images/shape01.svg" className="img-fluid w-100" alt="bg" width={150} height={150} />
                   </div>
                   <Swiper className={styles.swiperCustomControl} modules={[Pagination]} pagination={true} spaceBetween={24} slidesPerView={1}>
-                    <SwiperSlide>
-                      <figure className={styles.items}>
-                        <div className={styles.thumbs}>
-                          <Image src="/images/home/blog-03.jpg" className="img-fluid w-100" alt="Best Countries To Invest" width={150} height={150} />
-                        </div>
-                        <div className={styles.right}>
-                          <div className="h4">S K Jalan</div>
-                          <div className={styles.location}>Sector 64, Gurgaon</div>
-                          <p>
-                            I went through the site and the best part is, this site elicits trust because they display everything perfectly, I m happy I got my delectable home in Delhi, DLF Capital Greens.
-                          </p>
-                        </div>
-                      </figure>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <figure className={styles.items}>
-                        <div className={styles.thumbs}>
-                          <Image src="/images/home/blog-03.jpg" className="img-fluid w-100" alt="Best Countries To Invest" width={150} height={150} />
-                        </div>
-                        <div className={styles.right}>
-                          <div className="h4">S K Jalan</div>
-                          <div className={styles.location}>Sector 64, Gurgaon</div>
-                          <p>
-                            I went through the site and the best part is, this site elicits trust because they display everything perfectly, I m happy I got my delectable home in Delhi, DLF Capital Greens.
-                          </p>
-                        </div>
-                      </figure>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <figure className={styles.items}>
-                        <div className={styles.thumbs}>
-                          <Image src="/images/home/blog-03.jpg" className="img-fluid w-100" alt="Best Countries To Invest" width={150} height={150} />
-                        </div>
-                        <div className={styles.right}>
-                          <div className="h4">S K Jalan</div>
-                          <div className={styles.location}>Sector 64, Gurgaon</div>
-                          <p>
-                            I went through the site and the best part is, this site elicits trust because they display everything perfectly, I m happy I got my delectable home in Delhi, DLF Capital Greens.
-                          </p>
-                        </div>
-                      </figure>
-                    </SwiperSlide>
+                     {testimonial.map((testimonialdata) => (
+                        <SwiperSlide key={testimonialdata.id}>
+                           <figure className={styles.items}>
+                              <div className={styles.thumbs}>
+                                 {testimonialdata.userimage &&<Image src={testimonialdata.userimage} className="img-fluid w-100" alt="Best Countries To Invest" width={150} height={150} />}
+                              </div>
+                              <div className={styles.right}>
+                                 {testimonialdata.name &&<div className="h4">{testimonialdata.name}</div>}
+                                 {testimonialdata.location &&<div className={styles.location}>{testimonialdata.location}</div>}
+                                 {testimonialdata.shortdesc &&<p>{testimonialdata.shortdesc}</p>}
+                              </div>
+                           </figure>
+                        </SwiperSlide>
+                     ))}
                   </Swiper>
                 </div>
               </div>
