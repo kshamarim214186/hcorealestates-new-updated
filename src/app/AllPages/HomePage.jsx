@@ -266,7 +266,7 @@ export default function HomePage({ result }) {
               </div>
             </section>
             <div className={styles.bg}>
-              <Image src="/images/home-bg.svg" className="img-fluid" sizes="(min-width:768) 768vw, 100vw" alt="Dynamic required" width={700} height={1500} />
+              <Image src="/images/home-bg.svg" className="img-fluid" sizes="(min-width:768) 768vw, 100vw" alt="Home bg" width={700} height={1500} />
             </div>
          </main>
       </>
