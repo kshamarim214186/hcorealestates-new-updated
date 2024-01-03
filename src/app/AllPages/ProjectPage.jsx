@@ -100,8 +100,7 @@ export default function ProjectPage({ itemObj }) {
                   <div className={styles.left}>
                      {propData.propname && <h1>{propData.propname}</h1>}
                      <ul>
-                        {propData.propbhk && <li>{propData.propbhk} <Link href={propData.typelocationUrl}><span>{propData.propertytypename}</span></Link></li>}
-                        {propData.locationname && <li><Link href={propData.locationUrl}> <span>{propData.locationname}</span></Link></li>}
+                        {propData.propbhk && <li>{propData.propbhk} <span>{propData.propertysubtypename}</span></li>}                        
                      </ul>
                   </div>
                   <div className={styles.right}>
@@ -200,6 +199,11 @@ export default function ProjectPage({ itemObj }) {
                                   Completion <span>{propData.completion}</span>
                                  </li>
                               }
+                              {propData.locationname && 
+                                 <li>
+                                    Property Type <span><Link href={propData.typelocationUrl}> {propData.locationname}</Link></span>
+                                 </li>
+                              }
                            </ul>
                         </div>
                    
@@ -273,7 +277,7 @@ export default function ProjectPage({ itemObj }) {
                               </h2>
                               <ul>
                                  {amenitiesData.map(function(data,idx) {
-                                    if (idx <= 2) {
+                                    if (idx <= 5) {
                                        return (
                                           <li key={data.id}>
                                              <FontAwesomeIcon icon={faBadgePercent} /> {data.name}
