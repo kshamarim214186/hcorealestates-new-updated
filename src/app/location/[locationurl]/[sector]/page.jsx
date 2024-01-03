@@ -9,6 +9,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilterList } from "@fortawesome/pro-regular-svg-icons";
 import CustomButton from "@/app/UI/CustomButton";
+import TextComponent from "@/app/UI/TextComponent";
 import Accordion from "react-bootstrap/Accordion";
 import SortFilter from "@/app/UI/sort-filter";
 import ProjectBySector from "../../../components/ProjectBySector";
@@ -96,7 +97,7 @@ export default async function Page({ params: { locationurl, sector } }) {
                         <p>{secData.shortdesc}</p>
                         <Accordion defaultActiveKey="0">
                            <Accordion.Item eventKey="1">
-                              <Accordion.Body>{secData.fulldesc}</Accordion.Body>
+                              <Accordion.Body><TextComponent itemObj={secData.fulldesc} /></Accordion.Body>
                               <Accordion.Header as={"div"}></Accordion.Header>
                            </Accordion.Item>
                         </Accordion>
