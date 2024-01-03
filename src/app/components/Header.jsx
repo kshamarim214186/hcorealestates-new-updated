@@ -5,7 +5,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Image from "next/image";
 import getLocationType from "../api/getLocationType";
-import AsyncSearch from "./AsyncSearch";
+import HeaderSearch from "./HeaderSearch";
 
 
 export default function Header({ resultHeader, commercialData, residentialData }) {
@@ -20,12 +20,12 @@ export default function Header({ resultHeader, commercialData, residentialData }
             <Navbar.Brand href={pageData.homeurl}>
                <Image src={pageData.logo} alt="Hcorealestates" width={170} height={40} />
             </Navbar.Brand>
-            <div className="search-control">
-               <AsyncSearch />
-            </div>
+            <HeaderSearch />
             <Navbar.Offcanvas id="offcanvasNavbar-expand-lg" aria-labelledby="offcanvasNavbarLabel-expand-lg" placement="start">
                <Offcanvas.Header closeButton>
-                  <Offcanvas.Title id="offcanvasNavbarLabel-expand-lg"></Offcanvas.Title>
+                  <Offcanvas.Title id="offcanvasNavbarLabel-expand-lg">
+                     <Image src={pageData.logo} alt="Hcorealestates" width={170} height={40} />
+                  </Offcanvas.Title>
                </Offcanvas.Header>
                <Offcanvas.Body>
                   <Nav className="justify-content-end flex-grow-1 pe-3">
