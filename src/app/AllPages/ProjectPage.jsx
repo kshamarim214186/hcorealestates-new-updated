@@ -204,6 +204,11 @@ export default function ProjectPage({ itemObj }) {
                                     Property Type <span><Link href={propData.typelocationUrl}> {propData.locationname}</Link></span>
                                  </li>
                               }
+                              {propData.propsector && 
+                                 <li>
+                                    Sector <span>{propData.propsector}</span>
+                                 </li>
+                              }
                            </ul>
                         </div>
                    
