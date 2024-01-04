@@ -199,14 +199,14 @@ export default function ProjectPage({ itemObj }) {
                                   Completion <span>{propData.completion}</span>
                                  </li>
                               }
-                              {propData.locationname && 
+                              {propData.propertytypename && 
                                  <li>
-                                    Property Type <span><Link href={propData.typelocationUrl}> {propData.locationname}</Link></span>
+                                    Property Type <span><Link href={propData.typelocationUrl}> {propData.propertytypename}</Link></span>
                                  </li>
                               }
                               {propData.propsector && 
                                  <li>
-                                    Sector <span>{propData.propsector}</span>
+                                    Located in <span>{propData.propsector}</span>
                                  </li>
                               }
                            </ul>
