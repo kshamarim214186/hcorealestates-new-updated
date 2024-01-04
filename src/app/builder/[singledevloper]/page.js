@@ -51,7 +51,6 @@ async function SingleDeveloper({ params: { singledevloper } }) {
                   <Image src={builderData.devphoto} alt={builderData.devName} className="img-fluid d-block" width={100} height={45} />
                </Link>
                <h4 className="mt-3">{builderData.devName}</h4>
-               <div className="text-yellow-900 font-medium">60 Properties</div>
                <div dangerouslySetInnerHTML={{ __html: builderData.smalldesc }} />
                <Accordion defaultActiveKey="0">
                  <Accordion.Item eventKey="1">
@@ -111,8 +110,8 @@ async function getSingleBuilderDetails(singledevloper) {
    const formData = new URLSearchParams();
 
    formData.append('devurl', singledevloper);
-   formData.append('token1', 'test');
-   formData.append('token2', 'test1');
+   formData.append('token1', process.env.token1);
+   formData.append('token2', process.env.token2);
    const finalresult = await fetch(process.env.API_URL+'builders/getsingledeveloper/', {
       method: 'POST',
       headers: {
