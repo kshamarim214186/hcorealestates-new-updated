@@ -13,7 +13,7 @@ import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Fancybox from "@/app/UI/Fancybox";
 import Accordion from "react-bootstrap/Accordion";
-import ListItems from "../UI/ListItems";
+import SinglePropSection from "../UI/SinglePropSection";
 import TextComponent from "../UI/TextComponent";
 import MainForm from "../components/MainForm";
 import FloorPlan from "../components/FloorPlan";
@@ -384,7 +384,7 @@ export default function ProjectPage({ itemObj }) {
                            <Swiper className={styles.swiperCustomControl} modules={[Navigation]} spaceBetween={16} slidesPerView={"auto"} navigation={{ clickable: true }}>
                               {viewedmost.map((item) => (
                                  <SwiperSlide key={item.id}>
-                                    <ListItems itemObj={item} />
+                                    <SinglePropSection itemObj={item} />
                                  </SwiperSlide>
                               ))}
                            </Swiper>
@@ -395,7 +395,7 @@ export default function ProjectPage({ itemObj }) {
                            <Swiper className={styles.swiperCustomControl} modules={[Navigation]} spaceBetween={16} slidesPerView={"auto"} navigation={{ clickable: true }}>
                              {otherprop.map((item) => (
                                <SwiperSlide key={item.id}>
-                                 <ListItems itemObj={item} />
+                                 <SinglePropSection itemObj={item} />
                                </SwiperSlide>
                              ))}
                            </Swiper>

@@ -12,7 +12,7 @@ import { faChevronRight, faIndianRupeeSign } from "@fortawesome/pro-regular-svg-
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import CustomButton from "../UI/CustomButton";
-import ListItems from "../UI/ListItems";
+import SinglePropSection from "../UI/SinglePropSection";
 import AllDevelopers from "../UI/all-developers";
 
 export default function HomePage({ result }) {
@@ -132,7 +132,7 @@ export default function HomePage({ result }) {
                      >
                      {featuredPro.map((item) => (
                         <SwiperSlide key={item.id}>
-                           <ListItems itemObj={item} />
+                           <SinglePropSection itemObj={item} />
                         </SwiperSlide>
                      ))}
                   </Swiper>

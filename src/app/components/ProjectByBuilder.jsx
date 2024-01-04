@@ -1,5 +1,5 @@
 "use client";
-import ListItems from "../UI/ListItems";
+import SinglePropSection from "../UI/SinglePropSection";
 import styles from "../scss/developer.module.scss";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,23 +12,23 @@ export default async function ProjectByBuilder({ itemObj }) {
    return ( 
       <>    
          <Swiper
-               className={styles.swiperCustomControl}
-               modules={[Navigation]}
-               spaceBetween={24}
-               slidesPerView={1}
-               navigation={{ clickable: true }}
-               breakpoints={{
-                  640: { slidesPerView: 2 },
-               }}
-                  > 
-               {properties.map(function(property) {
-                  return (
-                     <SwiperSlide key={property.propId}>
-                        <ListItems itemObj={property} />
-                     </SwiperSlide>
+            className={styles.swiperCustomControl}
+            modules={[Navigation]}
+            spaceBetween={24}
+            slidesPerView={1}
+            navigation={{ clickable: true }}
+            breakpoints={{
+               640: { slidesPerView: 2 },
+            }}
+               > 
+            {properties.map(function(property) {
+               return (
+                  <SwiperSlide key={property.propId}>
+                     <SinglePropSection itemObj={property} />
+                  </SwiperSlide>
 
-                  );
-               })}
+               );
+            })}
          </Swiper>
       </>
   );
