@@ -30,7 +30,7 @@ export default async function Page({ params: { locationurl, sector } }) {
    const [show, setShow] = useState(false);
    const handleShow = () => setShow(true);
 
-   const sectorData = getSingleSectorDetails(sector);
+   const sectorData = getSingleSectorDetails(locationurl, sector);
    const sectorResult = await sectorData
    const message = sectorResult.message;
    const secData = sectorResult.sectordata;
@@ -47,6 +47,7 @@ export default async function Page({ params: { locationurl, sector } }) {
    const commercial = getLocationType('commercial');
    const commData = await commercial;
    const commercialData = commData.loctype;
+
    return (
       <>
       <Header resultHeader={result} commercialData={commercialData} residentialData={residentialData} />
@@ -112,10 +113,10 @@ export default async function Page({ params: { locationurl, sector } }) {
    );
 }
 
-async function getSingleSectorDetails(sector) {
+async function getSingleSectorDetails(locationurl,sector) {
    //const  apiUrl = 'https://www.api.hcorealestates.org/';
    const formData = new URLSearchParams();
-
+   formData.append('locationurl', locationurl);
    formData.append('sectorurl', sector);
    formData.append('token1', process.env.token1);
    formData.append('token2', process.env.token2);
