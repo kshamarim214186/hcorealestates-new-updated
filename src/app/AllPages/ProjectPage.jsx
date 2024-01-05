@@ -390,17 +390,18 @@ export default function ProjectPage({ itemObj }) {
                            </Swiper>
                         </div>
 
-                        <div className={styles.mostView}>
-                           <h2 className={styles.headings}>Other Projects by DLF Limited</h2>
-                           <Swiper className={styles.swiperCustomControl} modules={[Navigation]} spaceBetween={16} slidesPerView={"auto"} navigation={{ clickable: true }}>
-                             {otherprop.map((item) => (
-                               <SwiperSlide key={item.id}>
-                                 <SinglePropSection itemObj={item} />
-                               </SwiperSlide>
-                             ))}
-                           </Swiper>
-                        </div>
-                        {/*done*/}
+                        {otherprop.length > 0 &&
+                           <div className={styles.mostView}>
+                              <h2 className={styles.headings}>Other Projects by {propData.buildername}</h2>
+                              <Swiper className={styles.swiperCustomControl} modules={[Navigation]} spaceBetween={16} slidesPerView={"auto"} navigation={{ clickable: true }}>
+                                {otherprop.map((item) => (
+                                  <SwiperSlide key={item.id}>
+                                    <SinglePropSection itemObj={item} />
+                                  </SwiperSlide>
+                                ))}
+                              </Swiper>
+                           </div>
+                        }
                      </div>
                      <div className="col-lg-4 offset-lg-1">
                         <div className={styles.mainContent__right}>
