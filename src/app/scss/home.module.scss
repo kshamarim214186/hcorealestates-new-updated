@@ -134,6 +134,7 @@
     @include responsive(min992) {
       font-size: 2.5vw;
     } */
+    margin-right: 5rem;
     small {
       color: rgba($black, 0.4);
       font-weight: lighter;
@@ -142,6 +143,7 @@
     }
   }
   p {
+    margin-right: 5rem;
     font-size: var(--font-smaller);
   }
 }
@@ -403,6 +405,9 @@
     flex-wrap: wrap;
     column-gap: 2rem;
     padding: 2rem 2.5rem;
+    p {
+      margin-right: 0;
+    }
     @include responsive(min768) {
       padding: 7rem 8rem;
       flex-wrap: inherit;
@@ -428,5 +433,13 @@
 .swiperCustomControl {
   :global {
     @extend %next-prev-decoration;
+    .swiper-pagination-bullet {
+      width: 1.5rem;
+      border-radius: 0.3rem;
+      &-active {
+        width: 2.5rem;
+        background-color: $primary;
+      }
+    }
   }
 }
