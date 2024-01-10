@@ -1,0 +1,76 @@
+"use client";
+import { useSearchParams } from 'next/navigation';
+import Image from "next/image";
+import Breadcrumb from "react-bootstrap/Breadcrumb";
+import styles from "../scss/properties.module.scss";
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilterList } from "@fortawesome/pro-regular-svg-icons";
+import Accordion from "react-bootstrap/Accordion";
+import SortFilter from "@/app/UI/sort-filter";
+import ProjectByCondition from "../components/ProjectByCondition";
+import Filter from "../components/Filter";
+import Header from "@/app/components/Header";
+import Footer from "@/app/components/Footer";
+import NotFound from "@/app/components/NotFound";
+
+
+export default async function PropertiesListingByCondition({ itemObj,message, column }) {
+   const searchParams = useSearchParams() 
+   const page = searchParams.get('page') ? searchParams.get('page') : "";
+   const currentpage = searchParams.get('page') ? searchParams.get('page') : "1";  
+   
+   const resData = itemObj; 
+
+   return (
+      <>      
+      {message=='success' ?
+         <main className={`${styles.container} container-xl`}>
+            <title>{resData.seotitle}</title>
+            <meta name="description" content={resData.seodesc} />
+            <Breadcrumb className={styles.bredcurmb}>
+                <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+                <Breadcrumb.Item href={resData.url}>{resData.name}</Breadcrumb.Item>
+            </Breadcrumb>
+            <div className="row">
+               <div className="col-lg-4">
+                  <div className={`${styles.container__left} sticky-top`}>                     
+                     <Filter />
+                  </div>
+               </div>
+               <div className="col-lg-8">
+                  <div className={styles.container__right}>
+                    <div className={styles.listInfo}>
+                      <div className="">
+                        <div className="h1">{resData.name}</div>                        
+                      </div>
+                      <div className={styles.sort}>
+                        <SortFilter />
+                      </div>
+                    </div>
+                    <div className={styles.allList}>
+                        <ProjectByCondition itemObj={resData} page={page} currentpage={currentpage} columnname={column} />
+                    </div>
+                  </div>
+               </div>               
+            </div>
+            <div className="row">
+               <div className="col-lg-12">
+                  <div className={styles.overview}>
+                     <h1>{resData.name}</h1>
+                     <p>{resData.shortdesc}</p>
+                     <Accordion defaultActiveKey="0">
+                        <Accordion.Item eventKey="1">
+                           <Accordion.Body dangerouslySetInnerHTML={{ __html: resData.fulldesc }}></Accordion.Body>
+                           <Accordion.Header as={"div"}></Accordion.Header>
+                        </Accordion.Item>
+                    </Accordion>
+                  </div>
+               </div>
+            </div>
+         </main>
+         : <NotFound />
+      }
+      </>
+   );
+}
