@@ -18,9 +18,10 @@ export default async function ProjectByBuilder({ itemObj }) {
             slidesPerView={1}
             navigation={{ clickable: true }}
             breakpoints={{
-               640: { slidesPerView: 2 },
+               576: { slidesPerView: 2 },
+               768: { slidesPerView: 3 },
             }}
-               > 
+         > 
             {properties.map(function(property) {
                return (
                   <SwiperSlide key={property.propId}>
