@@ -38,7 +38,6 @@ export default async function ProjectByStatus({ itemObj, page, currentpage }) {
 async function getProjectByStatus(statusId,page) {
    //console.log(floorcatid);
    const formData = new URLSearchParams();
-
    formData.append('status_id', statusId);
    formData.append('token1', process.env.token1);
    formData.append('token2', process.env.token2);

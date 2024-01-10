@@ -1,4 +1,5 @@
 "use client";
+import { Suspense } from 'react'
 import { useSearchParams } from 'next/navigation';
 import { NextSeo } from "next-seo";
 import Image from "next/image";
@@ -50,53 +51,55 @@ export default async function PropertyLocation({ params: { location } }) {
    return (
       <>
       <Header resultHeader={result} commercialData={commercialData} residentialData={residentialData} />
-      {message=='success' ?
-         <main className={`${styles.container} container-xl`}>
-            <title>{locData.seotitle}</title>
-            <meta name="description" content={locData.seodesc} />
-            <Breadcrumb className={styles.bredcurmb}>
-                <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-                <Breadcrumb.Item href={locData.url}>{locData.name}</Breadcrumb.Item>
-            </Breadcrumb>
-            <div className="row">
-               <div className="col-lg-4">
-                  <div className={`${styles.container__left} sticky-top`}>                     
-                     <Filter />
+      <Suspense fallback={<div>Loading...</div>}>
+         {message=='success' ?
+            <main className={`${styles.container} container-xl`}>
+               <title>{locData.seotitle}</title>
+               <meta name="description" content={locData.seodesc} />
+               <Breadcrumb className={styles.bredcurmb}>
+                   <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+                   <Breadcrumb.Item href={locData.url}>{locData.name}</Breadcrumb.Item>
+               </Breadcrumb>
+               <div className="row">
+                  <div className="col-lg-4">
+                     <div className={`${styles.container__left} sticky-top`}>                     
+                        <Filter />
+                     </div>
+                  </div>
+                  <div className="col-lg-8">
+                     <div className={styles.container__right}>
+                       <div className={styles.listInfo}>
+                         <div className="">
+                           <div className="h1">{locData.name}</div>                        
+                         </div>
+                         <div className={styles.sort}>
+                           <SortFilter />
+                         </div>
+                       </div>
+                       <div className={styles.allList}>
+                           <ProjectByLocation itemObj={locData} page={page} currentpage={currentpage} />
+                       </div>
+                     </div>
+                  </div>               
+               </div>
+               <div className="row">
+                  <div className="col-lg-12">
+                     <div className={styles.overview}>
+                        <h1>{locData.name}</h1>
+                        <p>{locData.shortdesc}</p>
+                        <Accordion defaultActiveKey="0">
+                           <Accordion.Item eventKey="1">
+                              <Accordion.Body dangerouslySetInnerHTML={{ __html: locData.fulldesc }}></Accordion.Body>
+                              <Accordion.Header as={"div"}></Accordion.Header>
+                           </Accordion.Item>
+                       </Accordion>
+                     </div>
                   </div>
                </div>
-               <div className="col-lg-8">
-                  <div className={styles.container__right}>
-                    <div className={styles.listInfo}>
-                      <div className="">
-                        <div className="h1">{locData.name}</div>                        
-                      </div>
-                      <div className={styles.sort}>
-                        <SortFilter />
-                      </div>
-                    </div>
-                    <div className={styles.allList}>
-                        <ProjectByLocation itemObj={locData} page={page} currentpage={currentpage} />
-                    </div>
-                  </div>
-               </div>               
-            </div>
-            <div className="row">
-               <div className="col-lg-12">
-                  <div className={styles.overview}>
-                     <h1>{locData.name}</h1>
-                     <p>{locData.shortdesc}</p>
-                     <Accordion defaultActiveKey="0">
-                        <Accordion.Item eventKey="1">
-                           <Accordion.Body dangerouslySetInnerHTML={{ __html: locData.fulldesc }}></Accordion.Body>
-                           <Accordion.Header as={"div"}></Accordion.Header>
-                        </Accordion.Item>
-                    </Accordion>
-                  </div>
-               </div>
-            </div>
-         </main>
-         : <NotFound />
-      }
+            </main>
+            : <NotFound />
+         }
+      </Suspense>
       <Footer resultFooter={result} commercialData={commercialData} residentialData={residentialData} />
       </>
    );

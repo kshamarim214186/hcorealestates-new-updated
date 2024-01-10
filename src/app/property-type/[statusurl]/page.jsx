@@ -1,4 +1,5 @@
 "use client";
+import { Suspense } from 'react'
 import { useSearchParams } from 'next/navigation';
 import { NextSeo } from "next-seo";
 import Image from "next/image";
@@ -50,6 +51,7 @@ export default async function PropertyStatus({ params: { statusurl } }) {
    return (
       <>
       <Header resultHeader={result} commercialData={commercialData} residentialData={residentialData} />
+      <Suspense fallback={<div>Loading...</div>}>
       {message=='success' ?
          <main className={`${styles.container} container-xl`}>
             <title>{statsData.seotitle}</title>
@@ -97,6 +99,7 @@ export default async function PropertyStatus({ params: { statusurl } }) {
          </main>
          : <NotFound />
       }
+      </Suspense>
       <Footer resultFooter={result} commercialData={commercialData} residentialData={residentialData} />
       </>
    );

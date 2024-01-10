@@ -2,7 +2,7 @@ import styles from "../scss/main.module.scss";
 import React, { useState, useEffect } from 'react';
 export default function FloorPlan({ itemObj, propId }) {  
    const [propSpecification, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+   const [loading, setLoading] = useState(true);
 
    useEffect(() => {
       const fetchData = async () => {
