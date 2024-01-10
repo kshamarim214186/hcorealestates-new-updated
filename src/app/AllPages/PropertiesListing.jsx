@@ -14,7 +14,6 @@ import { faFilterList } from "@fortawesome/pro-regular-svg-icons";
 import CustomButton from "@/app/UI/CustomButton";
 import Accordion from "react-bootstrap/Accordion";
 import SortFilter from "@/app/UI/sort-filter";
-import ProjectByLocation from "../components/ProjectByLocation";
 import Filter from "../components/Filter";
 import ListItems from "../UI/ListItems";
 import getPropertiesList from "@/app/api/getPropertiesList";
