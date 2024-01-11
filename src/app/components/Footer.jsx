@@ -44,7 +44,6 @@ export default function Footer({ resultFooter, commercialData, residentialData, 
    const builderData = resultFooter.developerdata;
    const otherproject = resultFooter.otherproject;
    const buttontext = 'Enquire Now';
-   console.log(pageName)
   return (
     <>
       <footer className="footer">
