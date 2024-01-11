@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import Pagination from "react-bootstrap/Pagination";
 
@@ -6,7 +5,6 @@ export default function CustomPagination({ totalrecord, pagename, currentpage, n
    const numberofrecord = Array.from({ length: numberofpage }, (_, index) => index);
    return (
       <> 
-         {/*<p>Array: {numberofrecord.join(", ")}</p>*/ }
          <Pagination className=" justify-content-center mt-3 mb-lg-0 mb-5">
             <Pagination.Prev disabled />
                {numberofrecord.map(function(data,idx) {

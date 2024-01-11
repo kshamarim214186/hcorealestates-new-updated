@@ -1,4 +1,3 @@
-"use client";
 import ListItems from "../UI/ListItems";
 import styles from "../scss/developer.module.scss";
 import { Navigation } from "swiper";
