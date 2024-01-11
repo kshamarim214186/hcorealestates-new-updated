@@ -159,6 +159,13 @@ export default function Footer({ resultFooter, commercialData, residentialData }
           <FontAwesomeIcon icon={faWhatsapp} />
         </Link>
       </div>
+      {deskButton && (
+        <div className="desk-form">
+          <button className="btn btn-primary rounded-0" onClick={handleModalShow}>
+            ENQUIRE NOW
+          </button>
+        </div>
+      )}
       {aside && (
          <div className="aside_btn">
             <Link className="whatsapp" target="_blank" href="https://api.whatsapp.com/send?phone=+971507794706&amp;text=Hi%20I'm%20interested%20in%20Dubai Housing.">
