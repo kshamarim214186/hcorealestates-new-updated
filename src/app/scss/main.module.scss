@@ -36,7 +36,7 @@
     .left {
       position: relative;
       // border: red solid 1px;
-      margin-top: -3.5rem;
+      margin-top: -5.5rem;
       color: $white;
       margin-bottom: 1rem;
       display: flex;
@@ -49,11 +49,12 @@
       }
       h1 {
         font-size: var(--heading-font);
-        text-overflow: ellipsis;
+        /* text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
-        max-width: 320px;
+        max-width: calc(100vw - (var(--common-space) * 3)); */
         @include responsive(min640) {
+          max-width: 100%;
           font-size: 1.625rem;
         }
         margin-bottom: 0;
@@ -61,14 +62,20 @@
       ul {
         display: flex;
         column-gap: 0.5rem;
+        &.bhk {
+          flex-direction: column;
+          @include responsive(min768) {
+            flex-direction: row;
+          }
+        }
         li {
           font-size: var(--font-smallest);
           @include responsive(min768) {
             font-size: inherit;
-          }
-          &:not(:first-child) {
-            &::before {
-              content: "\2022";
+            &:not(:first-child) {
+              &::before {
+                content: "\2022";
+              }
             }
           }
           a {
@@ -86,6 +93,9 @@
       @extend .left;
       position: static;
       margin-top: var(--common-space);
+      @include responsive(min768) {
+        margin-top: 0;
+      }
       color: inherit;
       .logo {
         display: block;
@@ -708,7 +718,7 @@
         }
         span {
           font-weight: var(--font-bold);
-          flex: 0 0 50px;
+          flex: 0 0 65px;
           text-align: right;
         }
       }

@@ -100,7 +100,8 @@ export default function ProjectPage({ itemObj }) {
                   <div className={styles.left}>
                      {propData.propname && <h1>{propData.propname}</h1>}
                      <ul>
-                        {propData.propbhk && <li>{propData.propbhk} <span>{propData.propertysubtypename}</span></li>}                        
+                        {propData.propbhk && <li>{propData.propbhk} {propData.propertysubtypename && <span>{propData.propertysubtypename}</span>}</li>} 
+                        {(propData.propsector && propData.locationUrl) && <li> <Link href={propData.locationUrl}>{propData.propsector}{propData.locationname && <span>{", "+propData.locationname}</span>}</Link></li>}                      
                      </ul>
                   </div>
                   <div className={styles.right}>
