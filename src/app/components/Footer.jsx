@@ -12,7 +12,7 @@ import getLocationType from "../api/getLocationType";
 import { useState, useEffect } from "react";
 import Button from "../UI/Button";
 
-export default function Footer({ resultFooter, commercialData, residentialData }) {
+export default function Footer({ resultFooter, commercialData, residentialData, pageName }) {
     const currentYear = new Date().getFullYear();
      const whatsappStaticUrl = "https://api.whatsapp.com/send?phone=";
      const whatsappUrl = "https://api.whatsapp.com/send?phone=";
@@ -44,6 +44,7 @@ export default function Footer({ resultFooter, commercialData, residentialData }
    const builderData = resultFooter.developerdata;
    const otherproject = resultFooter.otherproject;
    const buttontext = 'Enquire Now';
+   console.log(pageName)
   return (
     <>
       <footer className="footer">
@@ -160,7 +161,7 @@ export default function Footer({ resultFooter, commercialData, residentialData }
           <FontAwesomeIcon icon={faWhatsapp} />
         </Link>
       </div>
-      {deskButton && (
+      {(deskButton && pageName!='undefined' && pageName!='project') && (
         <div className="desk-form">
           <Button itemObj={buttontext} buttonClass={`btn btn-primary rounded-0`} />  
         </div>

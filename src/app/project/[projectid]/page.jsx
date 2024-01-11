@@ -19,12 +19,12 @@ export default async function Page({ params }) {
    
    const properties = getProjectDetails(params.projectid);
    const resultProp = await properties;
-
+   const pageName = 'project';
    return (
       <>
       <Header resultHeader={result} commercialData={commercialData} residentialData={residentialData} />
          <ProjectPage itemObj={resultProp} />
-      <Footer resultFooter={result} commercialData={commercialData} residentialData={residentialData} />
+      <Footer resultFooter={result} commercialData={commercialData} residentialData={residentialData} pageName={pageName} />
       </>
    );
 }
