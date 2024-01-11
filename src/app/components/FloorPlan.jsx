@@ -59,17 +59,21 @@ export default function FloorPlan({ itemObj, propId }) {
                         <figcaption className={styles.figcaption}>
                            <h6>{propfloorplan.floorplanname}</h6>
                            <ul>
-                              <li>
-                                 Sizes <span>{propfloorplan.totalarea}</span>
-                              </li>
-                              <li>
-                              Prices{" "}
-                              <span>
-                                <FontAwesomeIcon icon={faIndianRupeeSign} /> {propfloorplan.price}
-                              </span>
-                              </li>
+                              { propfloorplan.totalarea &&
+                                 <li>
+                                    Sizes <span>{propfloorplan.totalarea}</span>
+                                 </li>
+                              }
+                              { propfloorplan.price &&
+                                 <li>
+                                    Prices{" "}
+                                    <span>
+                                      <FontAwesomeIcon icon={faIndianRupeeSign} /> {propfloorplan.price}
+                                    </span>
+                                 </li>
+                              }
                            </ul>
-                           <Button itemObj={buttontext} />
+                           <Button itemObj={buttontext} buttonClass={`btn btn-outline-primary btn-sm`} />
                         </figcaption>
                      </SwiperSlide>
                   ))}

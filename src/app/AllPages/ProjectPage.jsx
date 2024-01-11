@@ -375,7 +375,7 @@ export default function ProjectPage({ itemObj }) {
                                  <span>OR</span>
                               </div>
                               <div className="d-grid">
-                                 <Button itemObj={buttontext} />                               
+                                 <Button itemObj={buttontext} buttonClass={`btn btn-outline-primary btn-sm`} />                               
                               </div>
                            </div>
                         </div>

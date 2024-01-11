@@ -10,6 +10,7 @@ import CustomButton from "../UI/CustomButton";
 import { faSquarePhone } from "@fortawesome/pro-solid-svg-icons";
 import getLocationType from "../api/getLocationType";
 import { useState, useEffect } from "react";
+import Button from "../UI/Button";
 
 export default function Footer({ resultFooter, commercialData, residentialData }) {
     const currentYear = new Date().getFullYear();
@@ -42,7 +43,7 @@ export default function Footer({ resultFooter, commercialData, residentialData }
    const featuredPro = resultFooter.featuredproject;
    const builderData = resultFooter.developerdata;
    const otherproject = resultFooter.otherproject;
-
+   const buttontext = 'Enquire Now';
   return (
     <>
       <footer className="footer">
@@ -161,9 +162,7 @@ export default function Footer({ resultFooter, commercialData, residentialData }
       </div>
       {deskButton && (
         <div className="desk-form">
-          <button className="btn btn-primary rounded-0" onClick={handleModalShow}>
-            ENQUIRE NOW
-          </button>
+          <Button itemObj={buttontext} buttonClass={`btn btn-primary rounded-0`} />  
         </div>
       )}
       {aside && (
@@ -175,9 +174,7 @@ export default function Footer({ resultFooter, commercialData, residentialData }
                <FontAwesomeIcon icon={faSquarePhone} /> <span>Call Now</span>
             </Link>
             <div className="d-grid w-100">
-               <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#footerModal">
-                  Enquire Now
-               </button>
+               <Button itemObj={buttontext} buttonClass={`btn btn-primary`} />
             </div>
          </div>
       )}
