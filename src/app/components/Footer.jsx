@@ -9,11 +9,33 @@ import SocialMedia from "../UI/SocialMedia";
 import CustomButton from "../UI/CustomButton";
 import { faSquarePhone } from "@fortawesome/pro-solid-svg-icons";
 import getLocationType from "../api/getLocationType";
+import { useState, useEffect } from "react";
 
 export default function Footer({ resultFooter, commercialData, residentialData }) {
-   const currentYear = new Date().getFullYear();
-   const whatsappStaticUrl = "https://api.whatsapp.com/send?phone=";
-   const whatsappUrl = "https://api.whatsapp.com/send?phone=";
+    const currentYear = new Date().getFullYear();
+     const whatsappStaticUrl = "https://api.whatsapp.com/send?phone=";
+     const whatsappUrl = "https://api.whatsapp.com/send?phone=";
+     const [showModal, setShowModal] = useState(false);
+     const [deskButton, setDeskButton] = useState(false);
+     const [aside, setAside] = useState(false);
+     const handleModalShow = () => setShowModal(true);
+     const handleModalClose = () => setShowModal(false);
+
+     useEffect(() => {
+       const resposiveTrue = window.matchMedia("(min-width: 992px)").matches;
+       window.addEventListener("scroll", () => {
+         if (resposiveTrue && window.scrollY > 500) {
+           setDeskButton(true);
+         } else {
+           setDeskButton(false);
+         }
+         if (!resposiveTrue && window.scrollY > 300) {
+           setAside(true);
+         } else {
+           setAside(false);
+         }
+       });
+     }, []);
    
    const pageData = resultFooter.pagedata;
    const spotlight = resultFooter.spotlight;
@@ -137,19 +159,21 @@ export default function Footer({ resultFooter, commercialData, residentialData }
           <FontAwesomeIcon icon={faWhatsapp} />
         </Link>
       </div>
-      <div className="aside_btn">
-         <Link className="whatsapp" target="_blank" href="https://api.whatsapp.com/send?phone=+971507794706&amp;text=Hi%20I'm%20interested%20in%20Dubai Housing.">
-            <FontAwesomeIcon icon={faWhatsappSquare} /> <span>Whatsapp Now</span>
-         </Link>
-         <Link className="phone" href="tel:123456789">
-            <FontAwesomeIcon icon={faSquarePhone} /> <span>Call Now</span>
-         </Link>
-         <div className="d-grid w-100">
-            <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#footerModal">
-               Enquire Now
-            </button>
+      {aside && (
+         <div className="aside_btn">
+            <Link className="whatsapp" target="_blank" href="https://api.whatsapp.com/send?phone=+971507794706&amp;text=Hi%20I'm%20interested%20in%20Dubai Housing.">
+               <FontAwesomeIcon icon={faWhatsappSquare} /> <span>Whatsapp Now</span>
+            </Link>
+            <Link className="phone" href="tel:123456789">
+               <FontAwesomeIcon icon={faSquarePhone} /> <span>Call Now</span>
+            </Link>
+            <div className="d-grid w-100">
+               <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#footerModal">
+                  Enquire Now
+               </button>
+            </div>
          </div>
-      </div>
+      )}
     </>
   );
 }
