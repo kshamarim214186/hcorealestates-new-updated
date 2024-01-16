@@ -1,5 +1,6 @@
 import styles from "../scss/main.module.scss";
 import React, { useState, useEffect } from 'react';
+import TextComponent from "@/app/UI/TextComponent";
 export default function FloorPlan({ itemObj, propId }) {  
    const [propSpecification, setData] = useState([]);
    const [loading, setLoading] = useState(true);
@@ -44,7 +45,7 @@ export default function FloorPlan({ itemObj, propId }) {
                <div>
                   {propertySpeci.map((item, index) => (
                      <div className={styles.lines} key={item.specid}>
-                       <strong>{item.specsubcat}</strong>{item.specname}
+                       <TextComponent itemObj={item.specname} />
                      </div>
                   ))}
                </div>
