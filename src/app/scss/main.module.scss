@@ -67,6 +67,10 @@
           @include responsive(min768) {
             flex-direction: row;
           }
+          a {
+            position: relative;
+            z-index: 3;
+          }
         }
         li {
           font-size: var(--font-smallest);
@@ -549,8 +553,12 @@
         padding-bottom: 0.6rem;
         // align-items: center;
         column-gap: 0.9rem;
-        svg {
-          margin-top: 0.3rem;
+        // border: red solid 1px;
+        align-items: top;
+        &::before {
+          content: "\2713";
+          font-weight: var(--font-bold);
+          margin-top: 0.15rem;
         }
       }
     }
