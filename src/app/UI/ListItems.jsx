@@ -17,9 +17,11 @@ export default function FeatureProjectList({ itemObj }) {
                {itemObj.propertysubtypename && <li>{itemObj.propertysubtypename}</li>}               
                {(itemObj.locationname && itemObj.propsector && itemObj.locationUrl) && <li><Link href={itemObj.locationUrl}>{itemObj.propsector}, {itemObj.locationname}</Link></li>}
             </ul>
-            <div className="price">
-               <FontAwesomeIcon icon={faIndianRupeeSign} /> <span>{itemObj.price}</span>{!isNaN(itemObj.price) && <small>Cr.*</small>}
-            </div>
+            {itemObj.price &&
+               <div className="price">
+                  <FontAwesomeIcon icon={faIndianRupeeSign} /> <span>{itemObj.price}</span>{!isNaN(itemObj.price) && <small>Cr.*</small>}
+               </div>
+            }
             <div className="list__bottom">
                <div className="developer">
                   By: <span><Link href={itemObj.builderurl}>{itemObj.buildername}</Link></span>
