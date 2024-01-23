@@ -42,7 +42,7 @@ export default function Footer({ resultFooter, commercialData, residentialData, 
    const spotlight = resultFooter.spotlight;
    const featuredPro = resultFooter.featuredproject;
    const builderData = resultFooter.developerdata;
-   const otherproject = resultFooter.otherproject;
+   const otherproject = resultFooter.otherfooterproject;
    const buttontext = 'Enquire Now';
   return (
     <>
