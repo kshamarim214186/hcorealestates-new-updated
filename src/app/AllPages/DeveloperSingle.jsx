@@ -8,12 +8,14 @@ import CustomButton from "@/app/UI/CustomButton";
 import Accordion from "react-bootstrap/Accordion";
 import AllDevelopers from "@/app/UI/all-developers";
 import ProjectByBuilder from "../components/ProjectByBuilder";
+import BuildersProjectByConn from "../components/BuildersProjectByConn";
 
 export default function DeveloperSingle({ itemObj }) {
    const message = itemObj.message;
    const builderData = itemObj.builder;
    const developers = itemObj.allbuilders;
-
+   const relatedSecond = builderData.relatedTwo;
+   const relatedThird = builderData.relatedThree;
    return (
       <>      
          <div className="container-xl">
@@ -35,9 +37,60 @@ export default function DeveloperSingle({ itemObj }) {
 
             <div className={styles.allList}>
                <div className={styles.category}>
-                 <h2>{builderData.h2}</h2>
+                 {builderData.h2 &&<h2>{builderData.h2}</h2>}
                  <ProjectByBuilder itemObj={builderData} />
                </div>
+
+               {relatedSecond.length>0 &&
+                  <div className={styles.category}>
+                     {builderData.sectwohead &&<h2>{builderData.sectwohead}</h2>}
+                     <Swiper
+                     className={styles.swiperCustomControl}
+                     modules={[Navigation]}
+                     spaceBetween={24}
+                     slidesPerView={1}
+                     navigation={{ clickable: true }}
+                     breakpoints={{
+                        576: { slidesPerView: 2 },
+                        768: { slidesPerView: 3 },
+                     }}
+                     > 
+                     {relatedSecond.map((item, index) => {
+                        return (
+                           <SwiperSlide key={index}>
+                              <BuildersProjectByConn itemObj={item} />
+                           </SwiperSlide>
+                        );
+                     })}
+                     </Swiper>
+                  </div>
+               }
+
+
+               {relatedThird.length>0 &&
+                  <div className={styles.category}>
+                    {builderData.secthreehead &&<h2>{builderData.secthreehead}</h2>}
+                    <Swiper
+                     className={styles.swiperCustomControl}
+                     modules={[Navigation]}
+                     spaceBetween={24}
+                     slidesPerView={1}
+                     navigation={{ clickable: true }}
+                     breakpoints={{
+                        576: { slidesPerView: 2 },
+                        768: { slidesPerView: 3 },
+                     }}
+                     > 
+                     {relatedThird.map((item, index) => {
+                        return (
+                           <SwiperSlide key={index}>
+                              <BuildersProjectByConn itemObj={item} />
+                           </SwiperSlide>
+                        );
+                     })}
+                     </Swiper>
+                  </div>
+               }
             </div>
          </div>
 

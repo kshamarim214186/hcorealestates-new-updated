@@ -8,7 +8,6 @@ export default async function ProjectByBuilder({ itemObj }) {
 
    const projects = await getProjectByBuilder(itemObj.id);
    const properties = projects.projectbybuilder;
-   //console.log(properties);
    return ( 
       <>    
          <Swiper
@@ -27,7 +26,6 @@ export default async function ProjectByBuilder({ itemObj }) {
                   <SwiperSlide key={property.propId}>
                      <SinglePropSection itemObj={property} />
                   </SwiperSlide>
-
                );
             })}
          </Swiper>
