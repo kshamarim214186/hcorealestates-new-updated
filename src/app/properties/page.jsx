@@ -22,7 +22,7 @@ export default async function Properties() {
       <>
       <Header resultHeader={result} commercialData={commercialData} residentialData={residentialData} />
          <Suspense>
-            <PropertiesListing />
+            <PropertiesListing developers={result.developerdata} />
          </Suspense> 
       <Footer resultFooter={result} commercialData={commercialData} residentialData={residentialData} />
       </>

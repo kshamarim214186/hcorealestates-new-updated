@@ -20,13 +20,14 @@ import getPropertiesList from "@/app/api/getPropertiesList";
 import CustomPagination from "@/app/components/CustomPagination";
 
 
-export default async function PropertiesListing() {
+export default async function PropertiesListing({ developers }) {
 
    const searchParams = useSearchParams() 
    const page = searchParams.get('page') ? searchParams.get('page') : "";
    const currentpage = searchParams.get('page') ? searchParams.get('page') : "1";
+   const sort = searchParams.get('sort') ? searchParams.get('sort') : "";
 
-   const PropertyData = getPropertiesList(page);
+   const PropertyData = getPropertiesList(page,sort);
    const propResult = await PropertyData
    const message = propResult.message;
    const properties = propResult.propertydata;
@@ -49,7 +50,7 @@ export default async function PropertiesListing() {
             <div className="row">
                <div className="col-lg-4">
                   <div className={`${styles.container__left} sticky-top`}>                     
-                     <Filter />
+                     <Filter developer={developers} />
                   </div>
                </div>
                <div className="col-lg-8">

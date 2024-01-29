@@ -5,8 +5,8 @@ import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import styles from "../scss/properties.module.scss";
 
-export default function Filter() {
-    const [value, setValue] = useState([1, 10]);
+export default function Filter({ developer }) {
+    const [value, setValue] = useState([0, 10]);
    const handleChange = (val) => setValue(val);
 
    const [show, setShow] = useState(false);
@@ -20,34 +20,34 @@ export default function Filter() {
                   <div className="filter_header"></div>
                   <div className="mb-4">
                      <div className="border-bottom mb-3 pb-1">Bedroom</div>
-                   <ToggleButtonGroup className={styles.checkboxes} type="checkbox" size="sm" value={value} onChange={handleChange}>
-                     <ToggleButton variant="outline-primary" id="tbg-btn-1" value={1}>
-                       1 BHK
-                     </ToggleButton>
-                     <ToggleButton variant="outline-primary" id="tbg-btn-2" value={2}>
-                       2 BHK
-                     </ToggleButton>
-                     <ToggleButton variant="outline-primary" id="tbg-btn-3" value={3}>
-                       3 BHK
-                     </ToggleButton>
-                     <ToggleButton variant="outline-primary" id="tbg-btn-4" value={4}>
-                       4 BHK
-                     </ToggleButton>
-                     <ToggleButton variant="outline-primary" id="tbg-btn-5" value={5}>
-                       5 BHK
-                     </ToggleButton>
-                   </ToggleButtonGroup>
+                     <ToggleButtonGroup className={styles.checkboxes} type="checkbox" size="sm" value={value} onChange={handleChange}>
+                        <ToggleButton variant="outline-primary" id="tbg-btn-1" value={1}>
+                          1 BHK
+                        </ToggleButton>
+                        <ToggleButton variant="outline-primary" id="tbg-btn-2" value={2}>
+                          2 BHK
+                        </ToggleButton>
+                        <ToggleButton variant="outline-primary" id="tbg-btn-3" value={3}>
+                          3 BHK
+                        </ToggleButton>
+                        <ToggleButton variant="outline-primary" id="tbg-btn-4" value={4}>
+                          4 BHK
+                        </ToggleButton>
+                        <ToggleButton variant="outline-primary" id="tbg-btn-5" value={5}>
+                          5 BHK
+                        </ToggleButton>
+                     </ToggleButtonGroup>
                   </div>
                   <div className="mb-4">
-                   <label htmlFor="floatCountry" className="mb-2">
-                     Property Sub Type
-                   </label>
-                   <select className="form-select" id="floatCountry">
-                     <option value="1">Independent Floors</option>
-                     <option value="2">Apartments</option>
-                     <option value="3">Floors</option>
-                     <option value="3">Villas</option>
-                   </select>
+                     <label htmlFor="floatCountry" className="mb-2">
+                        Property Sub Type
+                     </label>
+                     <select className="form-select" id="floatCountry">
+                        <option value="1">Independent Floors</option>
+                        <option value="2">Apartments</option>
+                        <option value="3">Floors</option>
+                        <option value="3">Villas</option>
+                     </select>
                   </div>
 
                   <div className="mb-4">
@@ -63,26 +63,31 @@ export default function Filter() {
                   </div>
 
                   <div className="mb-4">
-                   <label htmlFor="floatCountry" className="mb-2">
-                     Posession In
-                   </label>
-                   <select className="form-select" id="">
-                     <option value="1">Ready to Move</option>
-                   </select>
+                     <label htmlFor="floatCountry" className="mb-2">
+                        Posession In
+                     </label>
+                     <select className="form-select" id="">
+                        <option value="1">Ready to Move</option>
+                     </select>
                   </div>
 
                   <div className="mb-4">
-                   <label htmlFor="floatCountry" className="mb-2">
-                     Developers
-                   </label>
-                   <select className="form-select" id="">
-                     <option value="1">Select Developer</option>
-                   </select>
+                     <label htmlFor="floatCountry" className="mb-2">
+                        Developers
+                     </label>
+                     <select className="form-select" id="">
+                        <option value="1">Select Developer</option>
+                        {developer.map(function(data,idx) {
+                           return (
+                              <option value={data.shorturl} key={idx}>{data.name}</option>
+                           )
+                        })}
+                     </select>
                   </div>
                   <div className="d-grid">
-                   <button type="submit" className="btn btn-primary">
-                     Filter Now
-                    </button>
+                     <button type="submit" className="btn btn-primary">
+                        Filter Now
+                     </button>
                   </div>
                </form>
             </Offcanvas.Body>

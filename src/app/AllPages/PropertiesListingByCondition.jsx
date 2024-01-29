@@ -15,7 +15,7 @@ import Footer from "@/app/components/Footer";
 import NotFound from "@/app/components/NotFound";
 
 
-export default async function PropertiesListingByCondition({ itemObj,message, column }) {
+export default async function PropertiesListingByCondition({ itemObj,message, column, developers }) {
    const searchParams = useSearchParams() 
    const page = searchParams.get('page') ? searchParams.get('page') : "";
    const currentpage = searchParams.get('page') ? searchParams.get('page') : "1";  
@@ -35,7 +35,7 @@ export default async function PropertiesListingByCondition({ itemObj,message, co
             <div className="row">
                <div className="col-lg-4">
                   <div className={`${styles.container__left} sticky-top`}>                     
-                     <Filter />
+                     <Filter developer={developers}/>
                   </div>
                </div>
                <div className="col-lg-8">

@@ -30,7 +30,7 @@ export default async function PropertyLocation({ params: { location } }) {
       <>
       <Header resultHeader={result} commercialData={commercialData} residentialData={residentialData} />
       <Suspense fallback={<div>Loading...</div>}>
-         <PropertiesListingByCondition itemObj={finalresult} message={locationResult.message} column={columnname} />
+         <PropertiesListingByCondition itemObj={finalresult} message={locationResult.message} column={columnname} developers={result.developerdata} />
       </Suspense>
       <Footer resultFooter={result} commercialData={commercialData} residentialData={residentialData} />
       </>
