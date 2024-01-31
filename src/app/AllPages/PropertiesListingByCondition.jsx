@@ -18,8 +18,8 @@ import NotFound from "@/app/components/NotFound";
 export default async function PropertiesListingByCondition({ itemObj,message, column, developers }) {
    const searchParams = useSearchParams() 
    const page = searchParams.get('page') ? searchParams.get('page') : "";
-   const currentpage = searchParams.get('page') ? searchParams.get('page') : "1";  
-   
+   const currentpage = searchParams.get('page') ? searchParams.get('page') : "1";
+   const sort = searchParams.get('sort') ? searchParams.get('sort') : "";    
    const resData = itemObj; 
 
    return (
@@ -45,7 +45,7 @@ export default async function PropertiesListingByCondition({ itemObj,message, co
                         <div className="h1">{resData.name}</div>                        
                       </div>
                       <div className={styles.sort}>
-                        <SortFilter />
+                        <SortFilter sortObj={sort} />
                       </div>
                     </div>
                     <div className={styles.allList}>

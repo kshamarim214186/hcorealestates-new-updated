@@ -60,7 +60,7 @@ export default async function PropertiesListing({ developers }) {
                         <div className="h1">{pageData.proplisth2}</div>                        
                       </div>
                       <div className={styles.sort}>
-                        <SortFilter />
+                        <SortFilter sortObj={sort} />
                       </div>
                     </div>
                     <div className={styles.allList}>
