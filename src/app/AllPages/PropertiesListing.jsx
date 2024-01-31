@@ -36,7 +36,7 @@ export default async function PropertiesListing({ developers }) {
    const number_of_page = Math.ceil(totalrecords / perpagerecord); 
    const pageData = propResult.pagedata;
    //console.log(locData)
-
+   const column = 'properties';
    return (
       <>
       { message=='success' &&
@@ -60,7 +60,7 @@ export default async function PropertiesListing({ developers }) {
                         <div className="h1">{pageData.proplisth2}</div>                        
                       </div>
                       <div className={styles.sort}>
-                        <SortFilter sortObj={sort} />
+                        <SortFilter sortObj={sort} currentpage={currentpage} />
                       </div>
                     </div>
                     <div className={styles.allList}>

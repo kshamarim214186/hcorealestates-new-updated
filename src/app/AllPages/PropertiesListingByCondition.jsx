@@ -45,11 +45,11 @@ export default async function PropertiesListingByCondition({ itemObj,message, co
                         <div className="h1">{resData.name}</div>                        
                       </div>
                       <div className={styles.sort}>
-                        <SortFilter sortObj={sort} />
+                        <SortFilter sortObj={sort} currentpage={currentpage} />
                       </div>
                     </div>
                     <div className={styles.allList}>
-                        <ProjectByCondition itemObj={resData} page={page} currentpage={currentpage} columnname={column} />
+                        <ProjectByCondition itemObj={resData} page={page} currentpage={currentpage} columnname={column} sortObj={sort} />
                     </div>
                   </div>
                </div>               

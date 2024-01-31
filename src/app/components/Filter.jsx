@@ -11,12 +11,19 @@ export default function Filter({ developer }) {
 
    const [show, setShow] = useState(false);
    const handleClose = () => setShow(false);
+
+   const [getdeveloper, setDeveloper] = useState("");
+   function formSubmitHandle(e) {
+      e.preventDefault();      
+      //console.log(getdeveloper);
+   }
+
    return ( 
       <>
          <Offcanvas show={show} onHide={handleClose} placement="end" responsive="lg">
             <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
-               <form>
+               <form onSubmit={formSubmitHandle}>
                   <div className="filter_header"></div>
                   <div className="mb-4">
                      <div className="border-bottom mb-3 pb-1">Bedroom</div>
@@ -75,8 +82,8 @@ export default function Filter({ developer }) {
                      <label htmlFor="floatCountry" className="mb-2">
                         Developers
                      </label>
-                     <select className="form-select" id="">
-                        <option value="1">Select Developer</option>
+                     <select className="form-select" id=""  value={getdeveloper} onChange={(e) => setDeveloper(e.target.value)}>
+                        <option value="">Select Developer</option>
                         {developer.map(function(data,idx) {
                            return (
                               <option value={data.shorturl} key={idx}>{data.name}</option>

@@ -1,10 +1,16 @@
-export default function SortFilter({ sortObj }) {   
+import { useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
+export default function SortFilter({ sortObj, currentpage }) { 
+   const router = useRouter();
+   const pathname = usePathname()
+   const currentPage = pathname+'?page='+currentpage
+   
    const handleChange = (event) => {
       const selectedValue = event.target.value;
       if(event.target.value === ''){
-         window.open(`/properties`, '_self');
+         window.open(`${pathname}`, '_self');
       }else{
-         window.open(`/properties?sort=${selectedValue}`, '_self');
+         window.open(`${currentPage}&sort=${selectedValue}`, '_self');
       }
    };
 
