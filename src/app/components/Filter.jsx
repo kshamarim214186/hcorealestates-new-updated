@@ -1,21 +1,31 @@
 "use client";
+import { usePathname } from 'next/navigation'
 import { useState } from "react";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import styles from "../scss/properties.module.scss";
 
-export default function Filter({ developer }) {
-    const [value, setValue] = useState([0, 10]);
+export default function Filter({ developer, currentpage, devObj }) {
+
+   const pathname = usePathname();
+   const currentPage = pathname+'?page='+currentpage
+   
+
+   const [value, setValue] = useState([0, 10]);
    const handleChange = (val) => setValue(val);
 
    const [show, setShow] = useState(false);
    const handleClose = () => setShow(false);
 
-   const [getdeveloper, setDeveloper] = useState("");
+   const [getdeveloper, setDeveloper] = useState(devObj);
    function formSubmitHandle(e) {
-      e.preventDefault();      
-      //console.log(getdeveloper);
+      e.preventDefault();
+      if(getdeveloper){
+         window.open(`${currentPage}&dev=${getdeveloper}`, '_self');
+      }else{
+         window.open(`${pathname}`, '_self');
+      } 
    }
 
    return ( 

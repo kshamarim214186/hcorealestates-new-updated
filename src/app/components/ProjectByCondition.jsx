@@ -3,7 +3,7 @@ import ListItems from "../UI/ListItems";
 import styles from "../scss/developer.module.scss";
 import CustomPagination from "@/app/components/CustomPagination";
 
-export default function ProjectByCondition({ itemObj, page, currentpage, columnname, sortObj }) { 
+export default function ProjectByCondition({ itemObj, page, currentpage, columnname, sortObj, devObj }) { 
 
    const [properties, setProperties] = useState([]);
    const [message, setMessage] = useState('');
@@ -22,6 +22,7 @@ export default function ProjectByCondition({ itemObj, page, currentpage, columnn
             formData.append('token2', process.env.token2);
             formData.append('page', page);
             formData.append('sortcon', sortObj);
+            formData.append('devurl', devObj);
             const finalresult = await fetch(process.env.API_URL+'properties/getprojectbyCondition/', {
                method: 'POST',
                headers: {

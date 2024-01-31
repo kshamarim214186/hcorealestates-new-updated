@@ -1,7 +1,5 @@
-import { useRouter } from 'next/navigation'
 import { usePathname } from 'next/navigation'
 export default function SortFilter({ sortObj, currentpage }) { 
-   const router = useRouter();
    const pathname = usePathname()
    const currentPage = pathname+'?page='+currentpage
    
