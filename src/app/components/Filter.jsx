@@ -38,7 +38,7 @@ export default function Filter({ developer, currentpage, devObj, bedObj, ptypeOb
          window.open(`${pathname}`, '_self');
       }
    }
-
+   
    return ( 
       <>
          <Offcanvas show={show} onHide={handleClose} placement="end" responsive="lg">
