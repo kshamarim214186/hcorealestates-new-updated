@@ -6,26 +6,28 @@ import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import styles from "../scss/properties.module.scss";
 
-export default function Filter({ developer, currentpage, devObj }) {
+export default function Filter({ developer, currentpage, devObj, bedObj }) {
 
    const pathname = usePathname();
    const currentPage = pathname+'?page='+currentpage
-   
-
-   const [value, setValue] = useState([0, 10]);
-   const handleChange = (val) => setValue(val);
 
    const [show, setShow] = useState(false);
    const handleClose = () => setShow(false);
 
    const [getdeveloper, setDeveloper] = useState(devObj);
+   const [getbed, setBed] = useState(bedObj);
+
    function formSubmitHandle(e) {
       e.preventDefault();
-      if(getdeveloper){
+      if(getbed && getdeveloper){
+         window.open(`${currentPage}&bed=${getbed}&dev=${getdeveloper}`, '_self');
+      }else if(getdeveloper){
          window.open(`${currentPage}&dev=${getdeveloper}`, '_self');
+      }else if(getbed){
+         window.open(`${currentPage}&bed=${getbed}`, '_self');
       }else{
          window.open(`${pathname}`, '_self');
-      } 
+      }
    }
 
    return ( 
@@ -37,20 +39,20 @@ export default function Filter({ developer, currentpage, devObj }) {
                   <div className="filter_header"></div>
                   <div className="mb-4">
                      <div className="border-bottom mb-3 pb-1">Bedroom</div>
-                     <ToggleButtonGroup className={styles.checkboxes} type="checkbox" size="sm" value={value} onChange={handleChange}>
-                        <ToggleButton variant="outline-primary" id="tbg-btn-1" value={1}>
+                     <ToggleButtonGroup className={styles.checkboxes} type="checkbox" size="sm">
+                        <ToggleButton variant="outline-primary" id="tbg-btn-1" value={1} onChange={(e) => setBed(e.target.value)}>
                           1 BHK
                         </ToggleButton>
-                        <ToggleButton variant="outline-primary" id="tbg-btn-2" value={2}>
+                        <ToggleButton variant="outline-primary" id="tbg-btn-2" value={2} onChange={(e) => setBed(e.target.value)}>
                           2 BHK
                         </ToggleButton>
-                        <ToggleButton variant="outline-primary" id="tbg-btn-3" value={3}>
+                        <ToggleButton variant="outline-primary" id="tbg-btn-3" value={3} onChange={(e) => setBed(e.target.value)}>
                           3 BHK
                         </ToggleButton>
-                        <ToggleButton variant="outline-primary" id="tbg-btn-4" value={4}>
+                        <ToggleButton variant="outline-primary" id="tbg-btn-4" value={4} onChange={(e) => setBed(e.target.value)}>
                           4 BHK
                         </ToggleButton>
-                        <ToggleButton variant="outline-primary" id="tbg-btn-5" value={5}>
+                        <ToggleButton variant="outline-primary" id="tbg-btn-5" value={5} onChange={(e) => setBed(e.target.value)}>
                           5 BHK
                         </ToggleButton>
                      </ToggleButtonGroup>

@@ -1,10 +1,11 @@
-export default async function getPropertiesList(page,sort,getDev) {
+export default async function getPropertiesList(page,sort,getDev,getBed) {
    const formData = new URLSearchParams();
    formData.append('token1', process.env.token1);
    formData.append('token2', process.env.token2);
    formData.append('page', page);
    formData.append('sortcon', sort);
    formData.append('devurl', getDev);
+   formData.append('bed', getBed);
    const finalresult = await fetch(process.env.API_URL+'properties/getAllPropertiesData/', {
       method: 'POST',
       headers: {
