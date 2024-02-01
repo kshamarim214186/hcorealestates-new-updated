@@ -6,7 +6,7 @@ import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import styles from "../scss/properties.module.scss";
 
-export default function Filter({ developer, currentpage, devObj, bedObj }) {
+export default function Filter({ developer, currentpage, devObj, bedObj, ptypeObj }) {
 
    const pathname = usePathname();
    const currentPage = pathname+'?page='+currentpage
@@ -16,15 +16,24 @@ export default function Filter({ developer, currentpage, devObj, bedObj }) {
 
    const [getdeveloper, setDeveloper] = useState(devObj);
    const [getbed, setBed] = useState(bedObj);
+   const [getptype, setPropertyType] = useState(ptypeObj);
 
    function formSubmitHandle(e) {
       e.preventDefault();
-      if(getbed && getdeveloper){
+      if(getbed && getdeveloper && getptype){
+         window.open(`${currentPage}&bed=${getbed}&dev=${getdeveloper}&propertytype=${getptype}`, '_self');
+      }else if(getbed && getdeveloper){
          window.open(`${currentPage}&bed=${getbed}&dev=${getdeveloper}`, '_self');
+      }else if(getptype && getdeveloper){
+         window.open(`${currentPage}&propertytype=${getptype}&dev=${getdeveloper}`, '_self');
+      }else if(getbed && getptype){
+         window.open(`${currentPage}&bed=${getbed}&propertytype=${getptype}`, '_self');
       }else if(getdeveloper){
          window.open(`${currentPage}&dev=${getdeveloper}`, '_self');
       }else if(getbed){
          window.open(`${currentPage}&bed=${getbed}`, '_self');
+      }else if(getptype){
+         window.open(`${currentPage}&propertytype=${getptype}`, '_self');
       }else{
          window.open(`${pathname}`, '_self');
       }
@@ -59,13 +68,20 @@ export default function Filter({ developer, currentpage, devObj, bedObj }) {
                   </div>
                   <div className="mb-4">
                      <label htmlFor="floatCountry" className="mb-2">
-                        Property Sub Type
+                        Property Type
                      </label>
-                     <select className="form-select" id="floatCountry">
-                        <option value="1">Independent Floors</option>
-                        <option value="2">Apartments</option>
-                        <option value="3">Floors</option>
-                        <option value="3">Villas</option>
+                     <select className="form-select" id="floatCountry"  value={getptype}  onChange={(e) => setPropertyType(e.target.value)}>
+                        <option value="">Select Type</option>
+                        <option value="apartments">Apartments</option>
+                        <option value="floors">Floors</option>
+                        <option value="villas">Villas</option>                        
+                        <option value="plots">Plots</option>
+                        <option value="penthouse">Penthouse</option>
+                        <option value="retails&offices">Retails & Offices</option>
+                        <option value="simplex&duplex">Simplex & Duplex</option>
+                        <option value="triplex">Triplex</option>
+                        <option value="it">IT</option>
+                        <option value="medical">Medical</option>
                      </select>
                   </div>
 
@@ -83,18 +99,9 @@ export default function Filter({ developer, currentpage, devObj, bedObj }) {
 
                   <div className="mb-4">
                      <label htmlFor="floatCountry" className="mb-2">
-                        Posession In
-                     </label>
-                     <select className="form-select" id="">
-                        <option value="1">Ready to Move</option>
-                     </select>
-                  </div>
-
-                  <div className="mb-4">
-                     <label htmlFor="floatCountry" className="mb-2">
                         Developers
                      </label>
-                     <select className="form-select" id=""  value={getdeveloper} onChange={(e) => setDeveloper(e.target.value)}>
+                     <select className="form-select" id="" value={getdeveloper} onChange={(e) => setDeveloper(e.target.value)}>
                         <option value="">Select Developer</option>
                         {developer.map(function(data,idx) {
                            return (

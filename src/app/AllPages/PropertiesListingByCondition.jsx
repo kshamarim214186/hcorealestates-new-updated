@@ -21,7 +21,8 @@ export default async function PropertiesListingByCondition({ itemObj,message, co
    const currentpage = searchParams.get('page') ? searchParams.get('page') : "1";
    const sort = searchParams.get('sort') ? searchParams.get('sort') : "";
    const getDev = searchParams.get('dev') ? searchParams.get('dev') : "";  
-   const getBed = searchParams.get('bed') ? searchParams.get('bed') : "";  
+   const getBed = searchParams.get('bed') ? searchParams.get('bed') : ""; 
+   const getPType = searchParams.get('propertytype') ? searchParams.get('propertytype') : ""; 
    const resData = itemObj; 
 
    return (
@@ -37,7 +38,7 @@ export default async function PropertiesListingByCondition({ itemObj,message, co
             <div className="row">
                <div className="col-lg-4">
                   <div className={`${styles.container__left} sticky-top`}>                     
-                     <Filter developer={developers} currentpage={currentpage} devObj={getDev} bedObj={getBed} />
+                     <Filter developer={developers} currentpage={currentpage} devObj={getDev} bedObj={getBed} ptypeObj={getPType} />
                   </div>
                </div>
                <div className="col-lg-8">
@@ -51,7 +52,7 @@ export default async function PropertiesListingByCondition({ itemObj,message, co
                       </div>
                     </div>
                     <div className={styles.allList}>
-                        <ProjectByCondition itemObj={resData} page={page} currentpage={currentpage} columnname={column} sortObj={sort} devObj={getDev} bedObj={getBed} />
+                        <ProjectByCondition itemObj={resData} page={page} currentpage={currentpage} columnname={column} sortObj={sort} devObj={getDev} bedObj={getBed} ptypeObj={getPType} />
                     </div>
                   </div>
                </div>               

@@ -28,8 +28,9 @@ export default async function PropertiesListing({ developers }) {
    const sort = searchParams.get('sort') ? searchParams.get('sort') : "";
    const getDev = searchParams.get('dev') ? searchParams.get('dev') : "";
    const getBed = searchParams.get('bed') ? searchParams.get('bed') : "";
+   const getPType = searchParams.get('propertytype') ? searchParams.get('propertytype') : "";
 
-   const PropertyData = getPropertiesList(page,sort,getDev,getBed);
+   const PropertyData = getPropertiesList(page,sort,getDev,getBed,getPType);
    const propResult = await PropertyData
    const message = propResult.message;
    const properties = propResult.propertydata;
@@ -52,7 +53,7 @@ export default async function PropertiesListing({ developers }) {
             <div className="row">
                <div className="col-lg-4">
                   <div className={`${styles.container__left} sticky-top`}>                     
-                     <Filter developer={developers} currentpage={currentpage} devObj={getDev} bedObj={getBed} />
+                     <Filter developer={developers} currentpage={currentpage} devObj={getDev} bedObj={getBed} ptypeObj={getPType} />
                   </div>
                </div>
                <div className="col-lg-8">
