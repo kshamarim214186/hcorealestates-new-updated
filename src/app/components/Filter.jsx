@@ -1,13 +1,12 @@
 "use client";
 import { usePathname } from 'next/navigation'
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import styles from "../scss/properties.module.scss";
-import getPrice from "../api/getPrice";
 
-export default async function Filter({ developer, currentpage, devObj, bedObj, ptypeObj, minObj, maxObj }) {
+export default function Filter({ developer, currentpage, devObj, bedObj, ptypeObj, minObj, maxObj }) {
 
    const pathname = usePathname();
    const currentPage = pathname+'?page='+currentpage
@@ -58,10 +57,35 @@ export default async function Filter({ developer, currentpage, devObj, bedObj, p
       }
    }
 
-   const priceData = getPrice();
-   const priceResult = await priceData;
-   const priceFilter = priceResult.price;
-   
+   const [priceFilter, setpriceFilter] = useState([]);
+   const [loading, setLoading] = useState(true);
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
+            const formData = new URLSearchParams();
+            formData.append('token1', process.env.token1);
+            formData.append('token2', process.env.token2);
+            const finalresult = await fetch(process.env.API_URL+'users/GetPriceList/', {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded',
+               },
+               body: formData,
+            });   
+           const result = await finalresult.json();
+           setpriceFilter(result.price);
+         } catch (error) {
+            console.error('Error fetching data:', error);
+         } finally {
+           setLoading(false);
+         }
+      };
+      fetchData();
+      return () => {
+
+      };
+   }, []);
+   //console.log(priceFilter);
    return ( 
       <>
          <Offcanvas show={show} onHide={handleClose} placement="end" responsive="lg">
