@@ -5,8 +5,9 @@ import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import styles from "../scss/properties.module.scss";
+import getPrice from "../api/getPrice";
 
-export default function Filter({ developer, currentpage, devObj, bedObj, ptypeObj }) {
+export default async function Filter({ developer, currentpage, devObj, bedObj, ptypeObj, minObj, maxObj }) {
 
    const pathname = usePathname();
    const currentPage = pathname+'?page='+currentpage
@@ -15,29 +16,51 @@ export default function Filter({ developer, currentpage, devObj, bedObj, ptypeOb
    const handleClose = () => setShow(false);
 
    const [getdeveloper, setDeveloper] = useState(devObj);
+   const [getminprice, setMinprice] = useState(minObj);
+   const [getmaxprice, setMaxprice] = useState(maxObj);
    const [getbed, setBed] = useState(bedObj);
    const [getptype, setPropertyType] = useState(ptypeObj);
 
+   const numberArray = getbed ? [0, parseInt(getbed)] : [0,6];   
+   const [value, setValue] = useState(numberArray);
+   const handleChange = (val) => setValue(val);
+
    function formSubmitHandle(e) {
       e.preventDefault();
-      if(getbed && getdeveloper && getptype){
-         window.open(`${currentPage}&bed=${getbed}&dev=${getdeveloper}&propertytype=${getptype}`, '_self');
-      }else if(getbed && getdeveloper){
-         window.open(`${currentPage}&bed=${getbed}&dev=${getdeveloper}`, '_self');
-      }else if(getptype && getdeveloper){
-         window.open(`${currentPage}&propertytype=${getptype}&dev=${getdeveloper}`, '_self');
-      }else if(getbed && getptype){
-         window.open(`${currentPage}&bed=${getbed}&propertytype=${getptype}`, '_self');
-      }else if(getdeveloper){
-         window.open(`${currentPage}&dev=${getdeveloper}`, '_self');
-      }else if(getbed){
-         window.open(`${currentPage}&bed=${getbed}`, '_self');
-      }else if(getptype){
-         window.open(`${currentPage}&propertytype=${getptype}`, '_self');
+      if(getminprice || getmaxprice){
+         if(getminprice && getmaxprice){
+            window.open(`${currentPage}&price_min=${getminprice}&price_max=${getmaxprice}`, '_self');
+         }else if(getminprice){
+            window.open(`${currentPage}&price_min=${getminprice}`, '_self');
+         }else if(getmaxprice){
+            window.open(`${currentPage}&price_max=${getmaxprice}`, '_self');
+         }else{
+            window.open(`${pathname}`, '_self');
+         }
       }else{
-         window.open(`${pathname}`, '_self');
+         if(getbed && getdeveloper && getptype){
+            window.open(`${currentPage}&bed=${getbed}&dev=${getdeveloper}&propertytype=${getptype}`, '_self');
+         }else if(getbed && getdeveloper){
+            window.open(`${currentPage}&bed=${getbed}&dev=${getdeveloper}`, '_self');
+         }else if(getptype && getdeveloper){
+            window.open(`${currentPage}&propertytype=${getptype}&dev=${getdeveloper}`, '_self');
+         }else if(getbed && getptype){
+            window.open(`${currentPage}&bed=${getbed}&propertytype=${getptype}`, '_self');
+         }else if(getdeveloper){
+            window.open(`${currentPage}&dev=${getdeveloper}`, '_self');
+         }else if(getbed){
+            window.open(`${currentPage}&bed=${getbed}`, '_self');
+         }else if(getptype){
+            window.open(`${currentPage}&propertytype=${getptype}`, '_self');
+         }else{
+            window.open(`${pathname}`, '_self');
+         }
       }
    }
+
+   const priceData = getPrice();
+   const priceResult = await priceData;
+   const priceFilter = priceResult.price;
    
    return ( 
       <>
@@ -48,7 +71,7 @@ export default function Filter({ developer, currentpage, devObj, bedObj, ptypeOb
                   <div className="filter_header"></div>
                   <div className="mb-4">
                      <div className="border-bottom mb-3 pb-1">Bedroom</div>
-                     <ToggleButtonGroup className={styles.checkboxes} type="checkbox" size="sm">
+                     <ToggleButtonGroup className={styles.checkboxes} type="checkbox" size="sm" value={value} onChange={handleChange}>
                         <ToggleButton variant="outline-primary" id="tbg-btn-1" value={1} onChange={(e) => setBed(e.target.value)}>
                           1 BHK
                         </ToggleButton>
@@ -86,15 +109,25 @@ export default function Filter({ developer, currentpage, devObj, bedObj, ptypeOb
                   </div>
 
                   <div className="mb-4">
-                      <div className="pb-1">Budget</div>
-                      <div className="d-flex column-gap-1">
-                        <select className="form-select" id="">
-                          <option value="1">Min Price</option>
+                     <div className="pb-1">Budget</div>
+                     <div className="d-flex column-gap-1">
+                        <select className="form-select" id="" value={getminprice} onChange={(e) => setMinprice(e.target.value)}>
+                           <option value="">Min Price</option>
+                           {priceFilter.map(function(data,idx) {
+                              return (
+                                 <option value={data.price} key={idx}>{data.price}</option>
+                              )
+                           })}
                         </select>
-                        <select className="form-select" id="">
-                          <option value="1">Max Price</option>
+                        <select className="form-select" id=""  value={getmaxprice} onChange={(e) => setMaxprice(e.target.value)}>
+                           <option value="">Max Price</option>
+                           {priceFilter.map(function(data,idx) {
+                              return (
+                                 <option value={data.price} key={idx}>{data.price}</option>
+                              )
+                           })}
                         </select>
-                      </div>
+                     </div>
                   </div>
 
                   <div className="mb-4">

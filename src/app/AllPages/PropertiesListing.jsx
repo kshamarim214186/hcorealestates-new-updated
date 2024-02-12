@@ -29,8 +29,10 @@ export default async function PropertiesListing({ developers }) {
    const getDev = searchParams.get('dev') ? searchParams.get('dev') : "";
    const getBed = searchParams.get('bed') ? searchParams.get('bed') : "";
    const getPType = searchParams.get('propertytype') ? searchParams.get('propertytype') : "";
+   const priceMin = searchParams.get('price_min') ? searchParams.get('price_min') : "";
+   const priceMax = searchParams.get('price_max') ? searchParams.get('price_max') : "";
 
-   const PropertyData = getPropertiesList(page,sort,getDev,getBed,getPType);
+   const PropertyData = getPropertiesList(page,sort,getDev,getBed,getPType,priceMin,priceMax);
    const propResult = await PropertyData
    const message = propResult.message;
    const properties = propResult.propertydata;
@@ -53,7 +55,7 @@ export default async function PropertiesListing({ developers }) {
             <div className="row">
                <div className="col-lg-4">
                   <div className={`${styles.container__left} sticky-top`}>                     
-                     <Filter developer={developers} currentpage={currentpage} devObj={getDev} bedObj={getBed} ptypeObj={getPType} />
+                     <Filter developer={developers} currentpage={currentpage} devObj={getDev} bedObj={getBed} ptypeObj={getPType} minObj={priceMin} maxObj={priceMax} />
                   </div>
                </div>
                <div className="col-lg-8">

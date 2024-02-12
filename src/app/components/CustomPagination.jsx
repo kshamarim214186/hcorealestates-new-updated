@@ -36,7 +36,7 @@ export default function CustomPagination({ totalrecord, pagename, currentpage, n
                   }              
                   
                })}
-            <Pagination.Next />
+            <Pagination.Next disabled />
          </Pagination>
       </>
    );
