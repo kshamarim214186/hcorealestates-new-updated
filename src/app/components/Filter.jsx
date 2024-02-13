@@ -2,9 +2,12 @@
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from "react";
 import ToggleButton from "react-bootstrap/ToggleButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilterList } from "@fortawesome/pro-regular-svg-icons";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import styles from "../scss/properties.module.scss";
+import SortFilter from "@/app/UI/sort-filter";
 
 export default function Filter({ developer, currentpage, devObj, bedObj, ptypeObj, minObj, maxObj }) {
 
@@ -12,6 +15,7 @@ export default function Filter({ developer, currentpage, devObj, bedObj, ptypeOb
    const currentPage = pathname+'?page='+currentpage
 
    const [show, setShow] = useState(false);
+   const handleShow = () => setShow(true);
    const handleClose = () => setShow(false);
 
    const [getdeveloper, setDeveloper] = useState(devObj);
@@ -88,6 +92,14 @@ export default function Filter({ developer, currentpage, devObj, bedObj, ptypeOb
    //console.log(priceFilter);
    return ( 
       <>
+         <div className="d-lg-none d-flex justify-content-between">
+            <button className="btn btn-outline-primary btn-sm d-lg-none" onClick={handleShow}>
+               Filter <FontAwesomeIcon icon={faFilterList} />
+            </button>
+            <div className="">
+               <SortFilter />
+            </div>
+         </div>
          <Offcanvas show={show} onHide={handleClose} placement="end" responsive="lg">
             <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
