@@ -55,7 +55,7 @@ export default async function PropertiesListing({ developers }) {
             <div className="row">
                <div className="col-lg-4">
                   <div className={`${styles.container__left} sticky-top`}>                     
-                     <Filter developer={developers} currentpage={currentpage} devObj={getDev} bedObj={getBed} ptypeObj={getPType} minObj={priceMin} maxObj={priceMax} />
+                     <Filter developer={developers} currentpage={currentpage} devObj={getDev} bedObj={getBed} ptypeObj={getPType} minObj={priceMin} maxObj={priceMax} sortObj={sort} />
                   </div>
                </div>
                <div className="col-lg-8">

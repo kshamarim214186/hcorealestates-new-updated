@@ -9,7 +9,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import styles from "../scss/properties.module.scss";
 import SortFilter from "@/app/UI/sort-filter";
 
-export default function Filter({ developer, currentpage, devObj, bedObj, ptypeObj, minObj, maxObj }) {
+export default function Filter({ developer, currentpage, devObj, bedObj, ptypeObj, minObj, maxObj, sortObj }) {
 
    const pathname = usePathname();
    const currentPage = pathname+'?page='+currentpage
@@ -97,7 +97,7 @@ export default function Filter({ developer, currentpage, devObj, bedObj, ptypeOb
                Filter <FontAwesomeIcon icon={faFilterList} />
             </button>
             <div className="">
-               <SortFilter />
+               <SortFilter sortObj={sortObj} currentpage={currentpage} />
             </div>
          </div>
          <Offcanvas show={show} onHide={handleClose} placement="end" responsive="lg">
