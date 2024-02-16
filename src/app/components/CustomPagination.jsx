@@ -10,6 +10,21 @@ export default function CustomPagination({ totalrecord, pagename, currentpage, n
    const getPType = searchParams.get('propertytype') ? searchParams.get('propertytype') : "";
    const priceMin = searchParams.get('price_min') ? searchParams.get('price_min') : "";
    const priceMax = searchParams.get('price_max') ? searchParams.get('price_max') : "";
+
+
+   const nextpageval = parseInt(currentpage)+parseInt(1)
+   const nextpageUrl = (getDev && getBed && getPType) ? "?page="+nextpageval+"&dev="+getDev+"&bed="+getBed+"&propertytype="+getPType 
+   : (getDev && getBed) ? "?page="+nextpageval+"&dev="+getDev+"&bed="+getBed
+   : (getBed && getPType) ? "?page="+nextpageval+"&bed="+getBed+"&propertytype="+getPType 
+   : (getDev && getBed) ? "?page="+nextpageval+"&dev="+getDev+"&bed="+getBed 
+   : (priceMin && priceMax) ? "?page="+nextpageval+"&price_min="+priceMin+"&price_max="+priceMax 
+   : priceMin ? "?page="+nextpageval+"&price_min="+priceMin
+   : priceMax ? "?page="+nextpageval+"&price_max="+priceMax 
+   : getPType ? "?page="+nextpageval+"&propertytype="+getPType 
+   : getBed ? "?page="+nextpageval+"&bed="+getBed
+   : getDev ? "?page="+nextpageval+"&dev="+getDev
+   : "?page="+nextpageval;
+
    return (
       <> 
          <Pagination className=" justify-content-center mt-3 mb-lg-0 mb-5">
@@ -41,7 +56,7 @@ export default function CustomPagination({ totalrecord, pagename, currentpage, n
                   }              
                   
                })}
-            <Pagination.Next disabled />
+            <Pagination.Next href={nextpageUrl} />
          </Pagination>
       </>
    );
