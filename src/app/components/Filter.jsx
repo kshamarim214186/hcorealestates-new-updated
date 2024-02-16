@@ -107,7 +107,7 @@ export default function Filter({ developer, currentpage, devObj, bedObj, ptypeOb
                   <div className="filter_header"></div>
                   <div className="mb-4">
                      <div className="border-bottom mb-3 pb-1">Bedroom</div>
-                     <ToggleButtonGroup className={styles.checkboxes} type="checkbox" size="sm" value={value} onChange={handleChange}>
+                     <ToggleButtonGroup className={styles.checkboxes} type="radio" name="bed" size="sm" value={value} onChange={handleChange}>
                         <ToggleButton variant="outline-primary" id="tbg-btn-1" value={1} onChange={(e) => setBed(e.target.value)}>
                           1 BHK
                         </ToggleButton>
