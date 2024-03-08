@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp, faWhatsappSquare, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import SocialMedia from "../UI/SocialMedia";
 import CustomButton from "../UI/CustomButton";
-import { faSquarePhone } from "@fortawesome/pro-solid-svg-icons";
+import { faSquarePhone } from "@fortawesome/pro-regular-svg-icons";
 import getLocationType from "../api/getLocationType";
 import { useState, useEffect } from "react";
 import Button from "../UI/Button";

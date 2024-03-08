@@ -2,7 +2,6 @@ import { useState } from "react";
 import ArrowButton from "@/app/UI/ArrowButton";
 import CustomOffCanvas from "@/app/components/CustomOffCanvas";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBadgePercent } from "@fortawesome/pro-regular-svg-icons";
 
 export default function MoreAmenities({ itemObj }) {
    const [ameniShow, setameniShow] = useState(false);
@@ -18,7 +17,7 @@ export default function MoreAmenities({ itemObj }) {
                {itemObj.map(function(data) {
                   return (
                      <li key={data.id}>
-                        <FontAwesomeIcon icon={faBadgePercent} /> {data.name}
+                        <FontAwesomeIcon icon={`fa-regular ${data.iconid}`} /> {data.name}
                      </li>
                   )
                })} 

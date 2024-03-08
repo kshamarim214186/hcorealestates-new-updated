@@ -8,6 +8,7 @@ import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import styles from "../scss/properties.module.scss";
 import SortFilter from "@/app/UI/sort-filter";
+import Link from "next/link";
 
 export default function Filter({ developer, currentpage, devObj, bedObj, ptypeObj, minObj, maxObj, sortObj }) {
 
@@ -104,7 +105,7 @@ export default function Filter({ developer, currentpage, devObj, bedObj, ptypeOb
             <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
                <form onSubmit={formSubmitHandle}>
-                  <div className="filter_header"></div>
+                  <div className="filter_header"><Link href={pathname}>reset</Link></div>
                   <div className="mb-4">
                      <div className="border-bottom mb-3 pb-1">Bedroom</div>
                      <ToggleButtonGroup className={styles.checkboxes} type="radio" name="bed" size="sm" value={value} onChange={handleChange}>

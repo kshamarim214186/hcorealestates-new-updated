@@ -3,8 +3,8 @@ import { useRouter } from 'next/navigation'
 import React, { useState } from 'react';
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/pro-light-svg-icons";
-import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons";
+import { faMagnifyingGlass } from "@fortawesome/pro-regular-svg-icons";
+import { faArrowLeft } from "@fortawesome/pro-regular-svg-icons";
 
 /* example-start */
 const SEARCH_URI = process.env.API_URL+'users/autosuggest/';

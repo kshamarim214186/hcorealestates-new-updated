@@ -7,7 +7,7 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import styles from "../scss/main.module.scss";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee, faMusic, faBadgePercent, faBank, faCartShopping, faCheck, faIndianRupeeSign, faPhoneVolume, faTimeline } from "@fortawesome/pro-regular-svg-icons";
+import { faCoffee, faMusic, faBadgePercent, faBank, faCartShopping, faCheck, faIndianRupeeSign, faPhoneVolume, faTimeline, faChevronLeft } from "@fortawesome/pro-regular-svg-icons";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -22,7 +22,10 @@ import NotFound from "@/app/components/NotFound";
 import MoreOverview from "../UI/MoreOverview"
 import MoreAmenities from "../UI/MoreAmenities"
 import Button from "../UI/Button";
-import { faChevronLeft } from "@fortawesome/pro-solid-svg-icons";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { far } from '@awesome.me/kit-e7972d293c/icons'
+
+library.add(far);
 
 export default function ProjectPage({ itemObj }) {
    
@@ -38,12 +41,7 @@ export default function ProjectPage({ itemObj }) {
    const otherprop = itemObj.otherprop;
    const neighcat = itemObj.neighcat;
    const buttontext = 'Schedule Now';
-
-   const iconMapping = {
-      coffee: faCoffee,
-      music: faMusic,
-   };
-
+   
    return (
       <>
       {message=='success' ?
@@ -159,11 +157,10 @@ export default function ProjectPage({ itemObj }) {
                            {keyplanData.length > 0 && 
                               <ul className={styles.highlights}>
                                  {keyplanData.map(function(keydata, index) {
+                                    console.log(keydata.iconid);
                                     return (
                                        <li key={keydata.id}>
-                                          {iconMapping[keydata.iconid] &&
-                                             <FontAwesomeIcon icon={iconMapping[keydata.iconid]} /> 
-                                          }
+                                       <FontAwesomeIcon icon={`fa-regular ${keydata.iconid}`} />                                          
                                           <div dangerouslySetInnerHTML={{ __html: keydata.name }}></div>
                                        </li>
                                     )
@@ -286,7 +283,7 @@ export default function ProjectPage({ itemObj }) {
                                     if (idx <= 5) {
                                        return (
                                           <li key={data.id}>
-                                             <FontAwesomeIcon icon={faBadgePercent} /> {data.name}
+                                             <FontAwesomeIcon icon={`fa-regular ${data.iconid}`} /> {data.name}
                                           </li>
                                        )
                                     }
@@ -326,7 +323,7 @@ export default function ProjectPage({ itemObj }) {
                                        return (
                                           <Nav.Item key={catdata.neighcatid}>
                                              <Nav.Link eventKey={catdata.neighcatname}>
-                                                <FontAwesomeIcon icon={faBadgePercent} /> 
+                                                <FontAwesomeIcon icon={`fa-regular ${catdata.iconid}`} /> 
                                                 <span>{catdata.neighcatname}</span>
                                              </Nav.Link>                                      
                                           </Nav.Item>
