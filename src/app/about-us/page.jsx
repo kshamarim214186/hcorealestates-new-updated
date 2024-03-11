@@ -202,7 +202,7 @@ export default async function AboutUs() {
 
         <section className={styles.process}>
         {otherPageData.h4 &&<h2>{otherPageData.h4}</h2>}
-          <Image width={1600} height={611} src="/images/about-us/overview-01.webp" alt="Overview" className="img-fluid" />
+          <Image width={1600} height={611} src={otherPageData.teamimage} alt="Overview" className="img-fluid" />
           <div className="container-xl">
             <div className="row">
               <div className="col-md-4">

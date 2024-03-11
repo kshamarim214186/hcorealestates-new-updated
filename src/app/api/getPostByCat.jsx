@@ -1,5 +1,4 @@
-export default async function getPostByCat(caturl) {
-   
+export default async function getPostByCat(caturl) {   
    const formData = new URLSearchParams();
    formData.append('token1', process.env.token1);
    formData.append('token2', process.env.token2);
