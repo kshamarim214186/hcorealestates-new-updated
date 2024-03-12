@@ -73,7 +73,7 @@ export default async function AboutUs() {
                            <div className={styles.others}>                              
                                  {conndata.map(function(keydata, index) {
                                     return (
-                                       <div className={styles.othersList}>
+                                       <div className={styles.othersList} key={index}>
                                           <div className={styles.count}>
                                              <div className={styles.h1}>{keydata.number}</div>
                                              <small>{keydata.name}</small>
@@ -101,7 +101,7 @@ export default async function AboutUs() {
                      <div className="row">                        
                         {tdata.map(function(tdata, index) {
                            return (
-                              <div className="col-lg-3 col-md-4 col-sm-6">
+                              <div className="col-lg-3 col-md-4 col-sm-6" key={index}>
                                  <div className={styles.teams}>
                                     <figure>
                                        <div className={styles.imgBg}>
@@ -136,7 +136,7 @@ export default async function AboutUs() {
                      <div className="row">
                         {awdata.map(function(awdata, index) {
                            return (
-                             <div className="col-md-3 col-sm-6">
+                             <div className="col-md-3 col-sm-6" key={index}>
                                <figure className={styles.awards}>
                                  <Image className="img-fluid" width={94} height={163} src={awdata.image} alt={awdata.name} />
                                  <figcaption>{awdata.name}</figcaption>
