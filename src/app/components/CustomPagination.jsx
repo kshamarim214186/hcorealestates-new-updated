@@ -30,31 +30,30 @@ export default function CustomPagination({ totalrecord, pagename, currentpage, n
          <Pagination className=" justify-content-center mt-3 mb-lg-0 mb-5">
             <Pagination.Prev disabled />
                {numberofrecord.map(function(data,idx) {
-                  const pageval = idx+1;                   
-                  //const pageUrl = (getDev || getBed || getPType) ? "?page="+pageval+"&dev="+getDev+"&bed="+getBed+"&propertytype="+getPType : "?page="+pageval; 
-
-                  const pageUrl = (getDev && getBed && getPType) ? "?page="+pageval+"&dev="+getDev+"&bed="+getBed+"&propertytype="+getPType 
-                                 : (getDev && getBed) ? "?page="+pageval+"&dev="+getDev+"&bed="+getBed
-                                 : (getBed && getPType) ? "?page="+pageval+"&bed="+getBed+"&propertytype="+getPType 
-                                 : (getDev && getBed) ? "?page="+pageval+"&dev="+getDev+"&bed="+getBed 
-                                 : (priceMin && priceMax) ? "?page="+pageval+"&price_min="+priceMin+"&price_max="+priceMax 
-                                 : priceMin ? "?page="+pageval+"&price_min="+priceMin
-                                 : priceMax ? "?page="+pageval+"&price_max="+priceMax 
-                                 : getPType ? "?page="+pageval+"&propertytype="+getPType 
-                                 : getBed ? "?page="+pageval+"&bed="+getBed
-                                 : getDev ? "?page="+pageval+"&dev="+getDev
-                                 : "?page="+pageval;
-                  
-                  if (parseInt(currentpage) === parseInt(pageval)) {
-                     return ( 
-                        <Pagination.Item href={pageUrl === '?page=1' ? pagename : pageUrl } key={idx} active>{pageval}</Pagination.Item>
-                     )
-                  }else{
-                     return ( 
-                        <Pagination.Item href={pageUrl === '?page=1' ? pagename : pageUrl } key={idx}>{pageval}</Pagination.Item>
-                     )
-                  }              
-                  
+                  const pageval = idx+1;  
+                  if (pageval <= 10) {
+                     const pageUrl = (getDev && getBed && getPType) ? "?page="+pageval+"&dev="+getDev+"&bed="+getBed+"&propertytype="+getPType 
+                                    : (getDev && getBed) ? "?page="+pageval+"&dev="+getDev+"&bed="+getBed
+                                    : (getBed && getPType) ? "?page="+pageval+"&bed="+getBed+"&propertytype="+getPType 
+                                    : (getDev && getBed) ? "?page="+pageval+"&dev="+getDev+"&bed="+getBed 
+                                    : (priceMin && priceMax) ? "?page="+pageval+"&price_min="+priceMin+"&price_max="+priceMax 
+                                    : priceMin ? "?page="+pageval+"&price_min="+priceMin
+                                    : priceMax ? "?page="+pageval+"&price_max="+priceMax 
+                                    : getPType ? "?page="+pageval+"&propertytype="+getPType 
+                                    : getBed ? "?page="+pageval+"&bed="+getBed
+                                    : getDev ? "?page="+pageval+"&dev="+getDev
+                                    : "?page="+pageval;
+                     
+                     if (parseInt(currentpage) === parseInt(pageval)) {
+                        return ( 
+                           <Pagination.Item href={pageUrl === '?page=1' ? pagename : pageUrl } key={idx} active>{pageval}</Pagination.Item>
+                        )
+                     }else{
+                        return ( 
+                           <Pagination.Item href={pageUrl === '?page=1' ? pagename : pageUrl } key={idx}>{pageval}</Pagination.Item>
+                        )
+                     } 
+                  }
                })}
             <Pagination.Next href={nextpageUrl} />
          </Pagination>
