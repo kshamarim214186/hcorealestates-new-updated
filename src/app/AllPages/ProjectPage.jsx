@@ -41,7 +41,7 @@ export default function ProjectPage({ itemObj }) {
    const otherprop = itemObj.otherprop;
    const neighcat = itemObj.neighcat;
    const buttontext = 'Schedule Now';
-   console.log(itemObj);
+   
    return (
       <>
       {message=='success' ?
@@ -156,8 +156,7 @@ export default function ProjectPage({ itemObj }) {
 
                            {keyplanData.length > 0 && 
                               <ul className={styles.highlights}>
-                                 {keyplanData.map(function(keydata, index) {
-                                    console.log(keydata.iconid);
+                                 {keyplanData.map(function(keydata, index) {                                    
                                     return (
                                        <li key={keydata.id}>
                                        <FontAwesomeIcon icon={`fa-regular ${keydata.iconid}`} />                                          
