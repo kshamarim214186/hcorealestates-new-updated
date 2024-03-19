@@ -41,7 +41,7 @@ export default function ProjectPage({ itemObj }) {
    const otherprop = itemObj.otherprop;
    const neighcat = itemObj.neighcat;
    const buttontext = 'Schedule Now';
-   
+   console.log("test");
    return (
       <>
       {message=='success' ?
